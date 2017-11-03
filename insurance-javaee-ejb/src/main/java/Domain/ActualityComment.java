@@ -17,7 +17,8 @@ public class ActualityComment implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@ManyToOne
 	private Insured insured ;
-
+	@ManyToOne
+	private Actuality actuality ;
 	public Insured getInsured() {
 		return insured;
 	}
@@ -33,6 +34,12 @@ public class ActualityComment implements Serializable {
 
 	public void setIdActualityComment(int idActualityComment) {
 		this.idActualityComment = idActualityComment;
+	}
+	public Actuality getActuality() {
+		return actuality;
+	}
+	public void setActuality(Actuality actuality) {
+		this.actuality = actuality;
 	}
    
 }

@@ -18,6 +18,8 @@ public class SurveyVote implements Serializable {
 
 	@ManyToOne
 	private Insured insured ;
+	@ManyToOne
+	private Survey survey;
 	
 	public Insured getInsured() {
 		return insured;
