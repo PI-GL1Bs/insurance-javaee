@@ -2,6 +2,7 @@ package Domain;
 
 import Domain.User;
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.*;
@@ -26,6 +27,29 @@ public class Insured extends User implements Serializable {
 	private List<Contract> listContracts ;
 	@OneToMany(mappedBy="insured")
 	private List<Appointment> listAppointments ;
+	private Date dateOfContract;
+
+	public Insured(int cin, String role, String name, String firstName, String photo, String mail, String adresse,
+			String login, String password, String confrimPassword, String sex, int tel,
+			List<SurveyVote> listSurveyVotes, List<ActualityComment> listActualityComments,
+			List<Reclamation> listReclamations, List<Contract> listContracts, List<Appointment> listAppointments,
+			Date dateOfContract) {
+		super(cin, role, name, firstName, photo, mail, adresse, login, password, confrimPassword, sex, tel);
+		this.listSurveyVotes = listSurveyVotes;
+		this.listActualityComments = listActualityComments;
+		this.listReclamations = listReclamations;
+		this.listContracts = listContracts;
+		this.listAppointments = listAppointments;
+		this.dateOfContract = dateOfContract;
+	}
+
+	public Date getDateOfContract() {
+		return dateOfContract;
+	}
+
+	public void setDateOfContract(Date dateOfContract) {
+		this.dateOfContract = dateOfContract;
+	}
 
 	public List<Appointment> getListAppointments() {
 		return listAppointments;

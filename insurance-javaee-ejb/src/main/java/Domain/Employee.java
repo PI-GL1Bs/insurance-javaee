@@ -2,6 +2,7 @@ package Domain;
 
 import Domain.User;
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.*;
@@ -21,6 +22,16 @@ public class Employee extends User implements Serializable {
 	private List<Reunion> listReunions ;
 	@OneToMany(mappedBy="employee")
 	private List<Appointment> listAppointments ;
+    private Date dateOfHire ;
+
+
+	public Date getDateOfHire() {
+		return dateOfHire;
+	}
+
+	public void setDateOfHire(Date dateOfHire) {
+		this.dateOfHire = dateOfHire;
+	}
 
 	public List<Appointment> getListAppointments() {
 		return listAppointments;
