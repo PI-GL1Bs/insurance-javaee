@@ -1,39 +1,38 @@
-package Domain;
+package domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
 
 /**
- * Entity implementation class for Entity: Car
+ * Entity implementation class for Entity: Police
  *
  */
 @Entity
 
-public class Car implements Serializable {
+public class Police implements Serializable {
 
 	   
 	@Id
-	private int idCar;
+	private int idPolice;
 	private static final long serialVersionUID = 1L;
-	
 	@OneToOne
 	private Contract contract ;
 	
+	public Police() {
+		super();
+	}   
+	public int getIdPolice() {
+		return this.idPolice;
+	}
+
+	public void setIdPolice(int idPolice) {
+		this.idPolice = idPolice;
+	}
 	public Contract getContract() {
 		return contract;
 	}
 	public void setContract(Contract contract) {
 		this.contract = contract;
-	}
-	public Car() {
-		super();
-	}   
-	public int getIdCar() {
-		return this.idCar;
-	}
-
-	public void setIdCar(int idCar) {
-		this.idCar = idCar;
 	}
    
 }

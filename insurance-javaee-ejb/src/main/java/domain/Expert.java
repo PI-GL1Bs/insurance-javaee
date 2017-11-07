@@ -1,21 +1,22 @@
-package Domain;
+package domain;
 
-import Domain.User;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import domain.User;
+
 /**
- * Entity implementation class for Entity: Admin
+ * Entity implementation class for Entity: Expert
  *
  */
 @Entity
 @Inheritance
-public class Admin extends User implements Serializable {
+public class Expert extends User implements Serializable {
 
 	
 	private static final long serialVersionUID = 1L;
 
-	public Admin() {
+	public Expert() {
 		super();
 	}
    

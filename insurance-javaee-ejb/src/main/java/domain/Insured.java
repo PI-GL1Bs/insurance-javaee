@@ -1,11 +1,12 @@
-package Domain;
+package domain;
 
-import Domain.User;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.*;
+
+import domain.User;
 
 /**
  * Entity implementation class for Entity: Insured
