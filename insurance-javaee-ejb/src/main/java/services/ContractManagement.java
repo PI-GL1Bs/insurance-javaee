@@ -33,7 +33,7 @@ public class ContractManagement implements ContractManagementLocal{
 	}
 
 	@Override
-	public List<Contract> findAllontracts() {
+	public List<Contract> findAllContracts() {
 		// TODO Auto-generated method stub
 		return null;
 	}
