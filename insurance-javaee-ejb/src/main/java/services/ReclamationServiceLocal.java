@@ -4,19 +4,18 @@ import java.util.List;
 
 import javax.ejb.Local;
 
+import domain.Contract;
+import domain.Insured;
 import domain.Reclamation;
 
 @Local
 public interface ReclamationServiceLocal {
 
-	public Reclamation createReclamation(Reclamation reclamation);
+	void create(Reclamation reclamation );
+	void update(Reclamation reclamation );
+	void delete(Reclamation reclamation );
 
-	public void saveProduct(Reclamation reclamation);
-
-	void removeProduct(Reclamation reclamation);
-
-	List<Reclamation> findAllProducts();
-
-	List<Reclamation> findReclamationByUser(Reclamation reclamation);
+	List<Reclamation> findAll();
+	List<Reclamation> findAllByInsured(Insured insured);
 
 }
