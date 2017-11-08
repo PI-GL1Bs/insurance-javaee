@@ -1,0 +1,79 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml">
+	<ui:define name="titleContent">Add Meeting</ui:define>
+	<ui:define name="pageContent">
+		<div class="section section-contents section-contact section-pad">
+			<div class="container">
+				<div class="content row">
+
+					<div class="contact-content row">
+						<div class="drop-message col-md-8 pad-r res-m-bttm">
+							<h2>Contact Information</h2>
+							<div class="row">
+								<div class="col-sm-5 res-s-bttm-sm">
+									<p>
+										<strong>Insurance Pro Inc.</strong><br> 34 South Franklin
+											Road </br>Santa Ana, CA 8975, USA.
+									</p>
+								</div>
+								<div class="col-sm-4 res-s-bttm-sm">
+									<p>
+										<strong>Contact Number</strong> <br> Phone: 781-123-9865
+										</br> Toll Free: 800-123-5689
+									</p>
+								</div>
+								<div class="col-sm-3">
+									<p>
+										<strong>Office Hours</strong><br> Monday-Friday </br>
+										8:30am-5:00pm
+									</p>
+								</div>
+							</div>
+							<div class="gaps size-lg"></div>
+							<div class="clear"></div>
+							<h4>Complete and submit the form below -</h4>
+							<h:form id="form_meeting" styleClass="form-message">
+								<div class="form-results"></div>
+								<div class="form-group row">
+									<div class="form-field col-md-6 form-m-bttm">
+										<h:outputText value="Sujet" />
+										<h:inputText value="#{reunionBean.reunion.name}"
+											styleClass="form-control required" />
+									</div>
+									<div class="form-field col-md-6 form-m-bttm">
+										<h:outputText value="Date" />
+										<h:inputText id="date" value="#{reunionBean.reunion.date}"
+											converter="myDateTimeConverter" required="true" />
+										<h:message for="date" />
+									</div>
+								</div>
+								<div class="form-group row">
+									<div class="form-field col-md-6">
+										<h:outputText value="Description" />
+										<h:inputText value="#{reunionBean.reunion.description}"
+											styleClass="txtarea form-control required" />
+									</div>
+								</div>
+								<h:commandButton action="#{reunionBean.addReunion()}"
+									value="Submit" styleClass="btn solid-btn sb-h" />
+							</h:form>
+						</div>
+						<div class="contact-maps col-md-4">
+							<!-- Map -->
+							<div class="map-holder map-contact-vertical">
+								<div id="gmap"></div>
+								<span class="gaps size-xs"></span> <small><a href="#"
+									class="btn-link">View on google Map</a></small>
+							</div>
+							<!-- End map -->
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
