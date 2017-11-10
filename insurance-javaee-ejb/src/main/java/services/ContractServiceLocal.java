@@ -7,9 +7,9 @@ import javax.ejb.Local;
 import domain.Contract;
 
 @Local
-public interface ContractManagementLocal {
+public interface ContractServiceLocal {
 	
-	void create(Contract c );
+	Contract create(Contract c );
 	void update(Contract c );
 	void delete(Contract c );
 	List<Contract> findAllContracts();
