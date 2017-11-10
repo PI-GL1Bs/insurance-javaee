@@ -1,0 +1,86 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+               	template="/template/template.xhtml">
+
+	<ui:define name="claim">claimDetails</ui:define>
+	<ui:define name="pageContent">
+      <div class="section section-content section-pad bdr-top">
+        <div class="container">
+            <div class="content row">
+                <div class="wide-md center">
+                <h2>Report an Claim</h2>
+						<p>A team of insurance professionals who are there when you need them, 24 hours a day, seven days a week. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudan.</p>
+                   	<h:dataTable
+                   	 emptyMessage="no products found!"
+								
+				             
+				                rows="5"
+				                paginator="true"
+				                paginatorPosition="bottom"
+				                selectionMode="single"
+				                selection="#{claimBean.listClaims}"
+				                rowKey="#{c.id}"
+				               
+				                widgetVar="prodTabW"
+                   	 
+                   	 value="#{claimBean.listClaims}" styleClass="table table-striped" var="c" >
+		<h:column>
+			<f:facet name="header">Title</f:facet>
+			<h:outputText value="#{c.title}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">Date</f:facet>
+			<h:outputText value="#{c.date}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">Place</f:facet>
+			<h:outputText value="#{c.place}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">Status</f:facet>
+			<h:outputText value="#{c.status}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">action</f:facet>
+			<h:form>
+			 
+			<h:commandLink  action="#{claimBean.navToClaim()}">
+    <i Class="glyphicon glyphicon-eye-open"></i>
+    <f:setPropertyActionListener value="#{c}"
+						target="#{claimBean.claim}" />
+</h:commandLink>
+<h:commandLink  action="#{claimBean.doDelete()}">
+    <i Class="glyphicon glyphicon-trash"></i>
+    <f:setPropertyActionListener value="#{c}"
+						target="#{claimBean.claim}" />
+</h:commandLink>
+<h:commandLink  action="#{claimBean.navUpdate()}" >
+    <i Class="glyphicon glyphicon-edit">
+    <f:setPropertyActionListener value="#{c}"
+						target="#{claimBean.claim}" /></i>
+</h:commandLink>
+				
+			</h:form>
+		</h:column>
+	</h:dataTable>
+            </div>
+            
+            <h:form><h:commandButton  action="#{claimBean.navCreate()}" value="Add Claim" styleClass="btn solid-btn sb-h" /></h:form>
+        </div>
+    </div>   </div>       	
+	</ui:define>	
+</ui:composition>
+
+
+
+
+
+
+
+
+
+
+
+

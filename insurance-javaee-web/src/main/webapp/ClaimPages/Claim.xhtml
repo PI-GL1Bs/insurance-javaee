@@ -1,0 +1,40 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+               	template="/template/template.xhtml">
+
+	<ui:define name="claim">claimDetails</ui:define>
+	<ui:define name="pageContent">
+      <div class="section section-content section-pad bdr-top">
+        <div class="container">
+            <div class="content row">
+                <div class="wide-md center">
+                   
+                    <div class="gaps size-3x"></div>
+                </div>
+                
+                <div class="row row-vm reverses">
+                    <div class="col-md-6 col-sm-6 res-m-bttm pad-r-md">
+                        <a href="#"><img src="image/photo-md-a.jpg" alt=""></img></a>
+                    </div>
+                    <div class="col-md-6 col-sm-6 pad-l-md">
+                        <h2>#{claimBean.claim.title}</h2>
+                        <h:outputText value="#{claimBean.claim.description} " styleClass="lead"/>
+                        <p class="lead">#{claimBean.claim.description}</p>
+                        <h5> Location: #{claimBean.claim.place}</h5>
+                        <h5> Date:#{claimBean.claim.date}</h5>
+                       
+                    </div>
+                </div>
+                <h:form>
+                <h:commandButton  action="#{claimBean.doDelete()}" value="delete" styleClass="btn solid-btn sb-h" >
+							</h:commandButton>
+			<h:commandButton  action="#{claimBean.navUpdate()}" value="update" styleClass="btn solid-btn sb-h" >
+							</h:commandButton></h:form>
+						
+            </div>
+        </div>
+    </div>          	
+	</ui:define>	
+</ui:composition>
