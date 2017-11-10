@@ -1,0 +1,55 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml">
+	<ui:define name="titleContent">Add Survey</ui:define>
+	<ui:define name="pageContent">
+		<div class="section section-contents section-contact section-pad">
+			<div class="container">
+				<div class="content row">
+
+					<div class="contact-content row">
+						<div class="drop-message col-md-8 pad-r res-m-bttm">
+						
+							<div class="gaps size-lg"></div>
+							<div class="clear"></div>
+							<h4>Add Survey -</h4>
+						
+							
+							<h:form id="form_meeting" styleClass="form-message">
+								<div class="form-results"></div>
+								
+								
+							<div class="form-group row">
+						
+								<div class="form-field col-md-12 form-m-bttm ">
+									<p>Description </p>
+									<h:inputTextarea value="#{surveyBean.survey.description}"  class="form-control required"/>
+								</div>
+							
+							</div>
+							
+							<div class="form-group row">
+								<div class="form-field col-md-12 ">
+								<p> End date </p>
+									<h:inputText id="date" value="#{surveyBean.survey.endDate}"
+											converter="myDateTimeConverter" required="true" />
+										<h:message for="date" />
+								</div>
+							</div>
+							
+								<h:commandButton action="#{surveyBean.addSurvey()}"
+									value="Submit" styleClass="btn solid-btn sb-h" />
+							</h:form>
+							
+							
+						</div>
+			
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>

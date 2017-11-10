@@ -1,6 +1,7 @@
 package domain;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
@@ -10,13 +11,17 @@ import javax.persistence.*;
  *
  */
 @Entity
-
 public class Survey implements Serializable {
 
 	   
 	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private int idSurvey;
-	private static final long serialVersionUID = 1L;
+	private String description ; 
+	private Date endDate ; 
+	
+    private static final long serialVersionUID = 1L;
+	
 	@OneToMany(mappedBy="survey")
 	private List<SurveyVote> listSurveyVotes ;
 
@@ -36,5 +41,25 @@ public class Survey implements Serializable {
 	public void setListSurveyVotes(List<SurveyVote> listSurveyVotes) {
 		this.listSurveyVotes = listSurveyVotes;
 	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public Date getEndDate() {
+		return endDate;
+	}
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
    
+	
+	
+	
+	
 }
