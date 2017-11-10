@@ -1,0 +1,43 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml">
+
+	<ui:define name="titleContent">Meeting</ui:define>
+	<ui:define name="pageContent">
+		<div class="section section-contents section-pad">
+			<div class="container">
+				<div class="content row">
+
+					<div class="row">
+						<div class="col-md-8">
+
+							<h2>Meeting Infos</h2>
+							<div class="team-profile mgtop">
+								<div class="team-member row">
+									<div class="team-info col-md-8 col-sm-7 col-xs-12">
+										<h:form>
+											<h:outputText value="#{reunionBean.reunion.name}"
+												styleClass="name" />
+												<br/><br/>
+											<h:outputText value="#{reunionBean.reunion.date}"
+												styleClass="sub-title" />
+											<h:outputText value="#{reunionBean.reunion.description}" />
+											<br/>
+											<h:commandButton action="#{reunionBean.goToUpdate()}"
+												value="Update" styleClass="btn solid-btn sb-h" />
+											<h:commandButton action="#{reunionBean.deleteMeeting()}"
+												value="Delete" styleClass="btn solid-btn sb-h" />
+										</h:form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>

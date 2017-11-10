@@ -31,14 +31,29 @@ public class ReunionService implements ReunionServiceRemote, ReunionServiceLocal
 	}
 
 	@Override
-	public void saveReunion(Reunion reunion) {
+	public Reunion saveReunion(Reunion reunion) {
 			em.merge(reunion);
+			return reunion;
 	}
 
 	@Override
 	public List<Reunion> findAllReunions() {
 		return em.createQuery("select r from Reunion r", Reunion.class)
 				.getResultList();
+	}
+
+	@Override
+	public Reunion findReunionById(int id) {
+		return em.find(Reunion.class, id);
+	}
+
+	@Override
+	public Boolean removeMeeting(Reunion reunion) {
+		if (reunion != null) {
+			em.remove(em.merge(reunion));
+			return true ;
+		}
+		return false;
 	}
 
 }

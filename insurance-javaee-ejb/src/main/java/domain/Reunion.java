@@ -21,6 +21,7 @@ public class Reunion implements Serializable {
 	private String name ;
 	private String description ;
 	private Date date;
+	private String mailTo;
 	@ManyToMany
 	private List<Employee> listInvitedEmployees ;
 	private static final long serialVersionUID = 1L;
@@ -67,6 +68,17 @@ public class Reunion implements Serializable {
 	}
 	public void setListEmployees(List<Employee> listEmployees) {
 		this.listInvitedEmployees = listEmployees;
+	}
+	public String getMailTo() {
+		return mailTo;
+	}
+	public void setMailTo(String mailTo) {
+		this.mailTo = mailTo;
+	}
+	@Override
+	public String toString() {
+		return "Reunion [idReunion=" + idReunion + ", name=" + name + ", description=" + description + ", date=" + date
+				+ "]";
 	}
    
 }

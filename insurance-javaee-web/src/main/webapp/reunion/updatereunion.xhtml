@@ -2,12 +2,9 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	template="/template/template.xhtml">
-	<ui:define name="titleContent">Add Meeting</ui:define>
+	xmlns:p="http://primefaces.org/ui" template="/template/template.xhtml">
+	<ui:define name="titleContent">Update a meeting</ui:define>
 	<ui:define name="pageContent">
-	<f:metadata>
-    	<f:viewAction action="#{reunionBean.init()}" />
-	</f:metadata>
 		<div class="section section-contents section-contact section-pad">
 			<div class="container">
 				<div class="content row">
@@ -18,14 +15,14 @@
 							<div class="row">
 								<div class="col-sm-5 res-s-bttm-sm">
 									<p>
-										<strong>Insurance Pro Inc.</strong><br/> 34 South Franklin
-											Road <br/>Santa Ana, CA 8975, USA.
+										<strong>Insurance Pro Inc.</strong><br /> 34 South Franklin
+										Road <br />Santa Ana, CA 8975, USA.
 									</p>
 								</div>
 								<div class="col-sm-4 res-s-bttm-sm">
 									<p>
-										<strong>Contact Number</strong> <br/> Phone: 781-123-9865
-										<br/> Toll Free: 800-123-5689
+										<strong>Contact Number</strong> <br /> Phone: 781-123-9865 <br />
+										Toll Free: 800-123-5689
 									</p>
 								</div>
 								<div class="col-sm-3">
@@ -38,29 +35,37 @@
 							<div class="gaps size-lg"></div>
 							<div class="clear"></div>
 							<h4>Complete and submit the form below -</h4>
-							<h:form id="form_meeting" styleClass="form-message" >
+							<h:form id="form_meeting" styleClass="form-message">
 								<div class="form-results"></div>
 								<div class="form-group row">
 									<div class="form-field col-md-6 form-m-bttm">
 										<h:outputText value="Sujet" />
-										<h:inputText value="#{reunionBean.reunion.name}"
+										<h:inputText id="sujetupdate"
+											value="#{reunionBean.reunion.name}"
 											styleClass="form-control required" />
+										<p:watermark for="sujetupdate"
+											value="#{reunionBean.reunion.name}" />
 									</div>
 									<div class="form-field col-md-6 form-m-bttm">
 										<h:outputText value="Date" />
-										<h:inputText id="date" value="#{reunionBean.reunion.date}"
-											converter="myDateTimeConverter" styleClass="form-control required"/>
-										<h:message for="date" />
+										<h:inputText id="Dateupdate" value="#{reunionBean.reunion.date}"
+											converter="myDateTimeConverter"
+											styleClass="form-control required" />
+											<p:watermark for="Dateupdate"
+											value="#{reunionBean.reunion.name}" />
+										<h:message for="Dateupdate" />
 									</div>
 								</div>
 								<div class="form-group row">
 									<div class="form-field col-md-6">
 										<h:outputText value="Description" />
-										<h:inputText value="#{reunionBean.reunion.description}"
+										<h:inputText id="descriptionUpdate" value="#{reunionBean.reunion.description}"
 											styleClass="txtarea form-control required" />
+											<p:watermark for="descriptionUpdate"
+											value="#{reunionBean.reunion.name}" />
 									</div>
 								</div>
-								<h:commandButton action="#{reunionBean.addReunion()}"
+								<h:commandButton action="#{reunionBean.updateMeeting()}"
 									value="Submit" styleClass="btn solid-btn sb-h" />
 							</h:form>
 						</div>
