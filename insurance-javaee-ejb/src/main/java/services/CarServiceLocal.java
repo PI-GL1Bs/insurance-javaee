@@ -8,4 +8,6 @@ import domain.Car;
 public interface CarServiceLocal {
 
 	Car addCar(Car c );
+	Car GetLastCar();
+	Car update(Car c);
 }

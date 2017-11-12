@@ -11,9 +11,17 @@ import domain.User;
  */
 @Entity
 @Inheritance
-public class Expert extends User implements Serializable {
+public class Expert extends Employee implements Serializable {
 
-	
+	private String Diplome ;
+	public String getDiplome() {
+		return Diplome;
+	}
+
+	public void setDiplome(String diplome) {
+		Diplome = diplome;
+	}
+
 	private static final long serialVersionUID = 1L;
 
 	public Expert() {
