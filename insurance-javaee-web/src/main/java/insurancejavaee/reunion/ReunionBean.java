@@ -1,5 +1,8 @@
 package insurancejavaee.reunion;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -22,6 +25,7 @@ public class ReunionBean {
 	private List<String> listMails;
 	private List<Employee> listEmployee;
 	private List<Reunion> listReunions;
+	private String WeekDay;
 
 	public ReunionBean() {
 		// TODO Auto-generated constructor stub
@@ -32,12 +36,12 @@ public class ReunionBean {
 		reunion = new Reunion();
 		listReunions = reunionServiceLocal.findAllReunions();
 	}
-
-	public List<String> configureList() {
+	public List<String> configureListMails() {
+		listMails = new ArrayList<String>();
 		String mailTo = reunion.getMailTo();
 		int j = 0;
 		for (int i = 0; i < mailTo.length(); i++) {
-			if (mailTo.charAt(i) == ',') {
+			if (mailTo.charAt(i) == ',' || mailTo.charAt(i) == ' ') {
 				listMails.add(mailTo.substring(j, i - 1));
 				j = i + 1;
 			}
@@ -46,17 +50,21 @@ public class ReunionBean {
 	}
 
 	public List<Employee> configureEmployeeByMail() {
-
+		
 		return listEmployee;
 	}
 
 	public String addReunion() {
 		String navTo = "";
-		Reunion r1 = new Reunion();
-		r1.setName(reunion.getName());
-		r1.setDescription(reunion.getDescription());
-		r1.setDate(reunion.getDate());
-		if (reunionServiceLocal.addReunion(r1) != null)
+		listReunions = new ArrayList<Reunion>();
+		listEmployee = new ArrayList<Employee>() ;
+		Employee e1 = new Employee() ;
+		listReunions.add(reunion);
+		e1.setCin(1235478);
+		e1.setListReunions(listReunions);
+		listEmployee.add(e1);
+		reunion.setListEmployees(listEmployee);
+		if (reunionServiceLocal.addReunion(reunion) != null)
 			navTo = "meetings?faces-redirect=true";
 		listReunions = reunionServiceLocal.findAllReunions();
 		return navTo;
@@ -68,6 +76,7 @@ public class ReunionBean {
 		reunion.setName(r1.getName());
 		reunion.setDate(r1.getDate());
 		reunion.setDescription(r1.getDescription());
+		reunion.setListEmployees(r1.getListEmployees());
 	}
 	public String goToUpdate() {
 		String navTo = "";
@@ -86,6 +95,7 @@ public class ReunionBean {
 		Map<String, String> params = fc.getExternalContext().getRequestParameterMap();
 		id = Integer.parseInt(params.get("meetingId")) ;
 		prepareMeetingData(id);
+		System.out.println("year : " + reunion.getDate().getDay());
 		navTo = "meeting?faces-redirect=true";
 		return navTo;
 	}
@@ -96,8 +106,6 @@ public class ReunionBean {
 		r1.setName(reunion.getName());
 		r1.setDescription(reunion.getDescription());
 		r1.setDate(reunion.getDate());
-		System.out.println(r1);
-		System.out.println("teeest");
 		if (reunionServiceLocal.saveReunion(r1) != null)
 			navTo = "meetings?faces-redirect=true";
 		listReunions = reunionServiceLocal.findAllReunions();
@@ -132,6 +140,14 @@ public class ReunionBean {
 
 	public void setListReunions(List<Reunion> listReunions) {
 		this.listReunions = listReunions;
+	}
+
+	public String getWeekDay() {
+		return WeekDay;
+	}
+
+	public void setWeekDay(String weekDay) {
+		WeekDay = weekDay;
 	}
 
 }

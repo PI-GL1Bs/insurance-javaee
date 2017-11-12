@@ -2,9 +2,14 @@ package domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Calendar;
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Transient;
 
 /**
  * Entity implementation class for Entity: Reunion
@@ -21,20 +26,23 @@ public class Reunion implements Serializable {
 	private String name ;
 	private String description ;
 	private Date date;
+	@Transient
+	private Calendar calendar ;
+	@Transient
 	private String mailTo;
 	@ManyToMany
 	private List<Employee> listInvitedEmployees ;
 	private static final long serialVersionUID = 1L;
 	
-	@ManyToOne
-	private Employee employee ;
-	
-	public Employee getEmployee() {
-		return employee;
-	}
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
+//	@ManyToOne
+//	private Employee employee ;
+//	
+//	public Employee getEmployee() {
+//		return employee;
+//	}
+//	public void setEmployee(Employee employee) {
+//		this.employee = employee;
+//	}
 	public Reunion() {
 		super();
 	}   
@@ -79,6 +87,12 @@ public class Reunion implements Serializable {
 	public String toString() {
 		return "Reunion [idReunion=" + idReunion + ", name=" + name + ", description=" + description + ", date=" + date
 				+ "]";
+	}
+	public Calendar getCalendar() {
+		return calendar;
+	}
+	public void setCalendar(Calendar calendar) {
+		this.calendar = calendar;
 	}
    
 }

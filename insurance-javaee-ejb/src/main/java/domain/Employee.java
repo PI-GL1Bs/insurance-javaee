@@ -18,7 +18,7 @@ public class Employee extends User implements Serializable {
 	
 	@OneToMany(mappedBy="employee")
 	private List<Claim> listClaims;
-	@OneToMany(mappedBy="employee")
+	@ManyToMany(mappedBy="listInvitedEmployees", fetch=FetchType.EAGER)
 	private List<Reunion> listReunions ;
 	@OneToMany(mappedBy="employee")
 	private List<Appointment> listAppointments ;

@@ -16,19 +16,31 @@
 							<h2>Meeting Infos</h2>
 							<div class="team-profile mgtop">
 								<div class="team-member row">
+									<div class="team-photo col-md-4 col-sm-5 col-xs-12">
+										<time datetime="2014-09-24"
+											class="date-as-calendar position-em size2x">
+											<span class="weekday"><h:outputLabel
+													value="#{reunionBean.weekDay}" /></span> <span class="day"><h:outputLabel
+													value="#{reunionBean.reunion.date.day}" /></span> <span
+												class="month"><h:outputLabel
+													value="#{reunionBean.reunion.date.month}" /></span> <span
+												class="year"><h:outputLabel
+													value="#{reunionBean.reunion.date.year}" /></span>
+										</time>
+									</div>
 									<div class="team-info col-md-8 col-sm-7 col-xs-12">
-										<h:form>
-											<h:outputText value="#{reunionBean.reunion.name}"
-												styleClass="name" />
-												<br/><br/>
-											<h:outputText value="#{reunionBean.reunion.date}"
-												styleClass="sub-title" />
-											<h:outputText value="#{reunionBean.reunion.description}" />
-											<br/>
+										<h:form>												<h:outputText value="#{reunionBean.reunion.name}"
+													styleClass="name" />
+												<br />
+												<br />
+												<h:outputText value="" styleClass="sub-title" />
+												<h:outputText value="#{reunionBean.reunion.description}" />
+											<br />
 											<h:commandButton action="#{reunionBean.goToUpdate()}"
-												value="Update" styleClass="btn solid-btn sb-h" />
-											<h:commandButton action="#{reunionBean.deleteMeeting()}"
-												value="Delete" styleClass="btn solid-btn sb-h" />
+													value="Update" styleClass="btn solid-btn sb-h" />
+												<h:commandButton action="#{reunionBean.deleteMeeting()}"
+													value="Delete" styleClass="btn solid-btn sb-h" />
+
 										</h:form>
 									</div>
 								</div>

@@ -17,6 +17,7 @@ import domain.Reunion;
 public class ReunionService implements ReunionServiceRemote, ReunionServiceLocal {
 	@PersistenceContext
 	private EntityManager em;
+	
     /**
      * Default constructor. 
      */
@@ -35,7 +36,6 @@ public class ReunionService implements ReunionServiceRemote, ReunionServiceLocal
 			em.merge(reunion);
 			return reunion;
 	}
-
 	@Override
 	public List<Reunion> findAllReunions() {
 		return em.createQuery("select r from Reunion r", Reunion.class)
@@ -55,5 +55,4 @@ public class ReunionService implements ReunionServiceRemote, ReunionServiceLocal
 		}
 		return false;
 	}
-
 }

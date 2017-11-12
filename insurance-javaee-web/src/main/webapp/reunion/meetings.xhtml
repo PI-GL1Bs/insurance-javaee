@@ -3,7 +3,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	template="/template/template.xhtml">
-
+	
 	<ui:define name="titleContent">Meetings</ui:define>
 	<ui:define name="pageContent">
 		<div class="section section-contents section-contact section-pad">
@@ -15,8 +15,10 @@
 							<h2>Meetings</h2>
 							<h3>List of Meetings</h3>
 							<h:form>
+								<h:commandButton action="addreunion?faces-redirect=true"
+									value="Add Meeting" styleClass="btn solid-btn sb-h" />
 								<h:dataTable value="#{reunionBean.listReunions}" var="meet"
-									styleClass="table table-s1 table-claim table-bordered table-vertical" >
+									styleClass="table table-s1 table-claim table-bordered table-vertical">
 									<tbody>
 										<h:column>
 											<strong><h:commandLink
