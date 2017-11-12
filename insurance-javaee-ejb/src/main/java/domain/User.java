@@ -17,9 +17,9 @@ public class User implements Serializable {
 
 	   
 	@Id
-	private int cin;
+	private int id;
 	private String role ;
-	private String name ;
+	private String lastName ;
 	private String FirstName;
 	private String photo;
 	private String mail ;
@@ -38,12 +38,12 @@ public class User implements Serializable {
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
-	public User(int cin, String role, String name, String firstName, String photo, String mail, String adresse,
+	public User(int id, String role, String lastName, String firstName, String photo, String mail, String adresse,
 			String login, String password, String confrimPassword, String sex, int tel) {
 		super();
-		this.cin = cin;
+		this.id = id;
 		this.role = role;
-		this.name = name;
+		this.lastName = lastName;
 		FirstName = firstName;
 		this.photo = photo;
 		this.mail = mail;
@@ -60,11 +60,18 @@ public class User implements Serializable {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	public String getName() {
-		return name;
+	
+	public int getId() {
+		return id;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 	public String getFirstName() {
 		return FirstName;
@@ -120,24 +127,13 @@ public class User implements Serializable {
 	public void setTel(int tel) {
 		Tel = tel;
 	}
-	public int getCin() {
-		return cin;
-	}
-	public void setCin(int cin) {
-		this.cin = cin;
-	}
+	
 
 	private static final long serialVersionUID = 1L;
 
 	public User() {
 		super();
 	}   
-	public int getIdUser() {
-		return this.cin;
-	}
-
-	public void setIdUser(int idUser) {
-		this.cin = idUser;
-	}
+	
    
 }
