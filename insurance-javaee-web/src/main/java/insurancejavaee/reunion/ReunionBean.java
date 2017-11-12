@@ -60,7 +60,7 @@ public class ReunionBean {
 		listEmployee = new ArrayList<Employee>() ;
 		Employee e1 = new Employee() ;
 		listReunions.add(reunion);
-		e1.setCin(1235478);
+		e1.setId(1235478);
 		e1.setListReunions(listReunions);
 		listEmployee.add(e1);
 		reunion.setListEmployees(listEmployee);

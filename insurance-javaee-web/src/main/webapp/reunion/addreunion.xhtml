@@ -57,7 +57,8 @@
 										<h:outputText value="Date" />
 										<h:inputText id="date" value="#{reunionBean.reunion.date}"
 											styleClass="form-control required">
-											<f:convertDateTime pattern="dd/MM/yyyy" />
+											
+											<a:passThroughAttribute name="type" value="date" />
 										</h:inputText>
 										<h:message for="date" />
 									</div>
