@@ -5,7 +5,9 @@
 	template="/template/template.xhtml">
 	<ui:define name="titleContent">Add contract</ui:define>
 	<ui:define name="pageContent">
-
+	<f:metadata>
+    	<f:viewAction action="#{contractBean.init()}" />
+	</f:metadata>
 
 
 		<h:form id="form_meeting" styleClass="form-message">

@@ -13,7 +13,9 @@ public class Car implements Serializable {
 
 	   
 	@Id
+	@GeneratedValue
 	private int idCar;
+	
 	private static final long serialVersionUID = 1L;
 	private String marque;
 	private String modele;
