@@ -1,0 +1,85 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+             >
+   
+			<table class="table table-s1 table-claim table-bordered table-vertical">
+							<tbody>
+								<tr>
+									<td>
+									<strong>WorkForce</strong>
+
+										
+									</td>
+									<td>
+										<strong>value</strong>	
+					
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>sheet metal workshop</strong></p>
+
+									</td>
+									<td>
+										<p>#{claimBean.claim.estimation.sheetMetalWorkshop}</p>
+									</td>
+								</tr>
+									<tr>
+									<td>
+										<p><strong>electricity</strong></p>
+
+									</td>
+									<td>
+										<p>#{claimBean.claim.estimation.electricity}</p>
+									</td>
+								</tr>
+									<tr>
+									<td>
+										<p><strong>Woodwork</strong></p>
+
+									</td>
+									<td>
+										<p>#{claimBean.claim.estimation.woodwork}</p>
+									</td>
+								</tr>
+									<tr>
+									<td>
+										<p><strong>Mechanical</strong></p>
+
+									</td>
+									<td>
+										<p>#{claimBean.claim.estimation.mechanical}</p>
+									</td>
+								</tr>
+									<tr>
+									<td>
+										<p><strong>Tapestry</strong></p>
+
+									</td>
+									<td>
+										<p>#{claimBean.claim.estimation.tapestry}</p>
+									</td>
+								</tr>
+									<tr>
+									<td>
+										<p><strong>Painting</strong></p>
+
+									</td>
+									<td>
+										<p>#{claimBean.claim.estimation.painting}</p>
+									</td>
+								</tr>
+									<tr>
+									<td>
+										<p><strong>Total</strong></p>
+
+									</td>
+									<td>
+										<p>#{claimBean.claim.estimation.priceWorkForce}</p>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+</ui:composition>

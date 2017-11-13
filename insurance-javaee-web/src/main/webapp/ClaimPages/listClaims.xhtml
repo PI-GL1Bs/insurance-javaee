@@ -1,76 +1,63 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-               	template="/template/template.xhtml">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml">
 
 	<ui:define name="claim">claimDetails</ui:define>
 	<ui:define name="pageContent">
-      <div class="section section-content section-pad bdr-top">
-        <div class="container">
-            <div class="content row">
-                <div class="wide-md center">
-                <h2>Report an Claim</h2>
-						<p>A team of insurance professionals who are there when you need them, 24 hours a day, seven days a week. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudan.</p>
-                   	<h:dataTable
-                   	 emptyMessage="no products found!"
+		<h:form>
+			<h:commandButton action="#{claimBean.navCreate()}" value="Add Claim"
+				styleClass="btn solid-btn sb-h"/>
+		</h:form>
+		<div class="section section-content section-pad bdr-top">
+			<div class="container">
+				<ui:repeat value="#{claimBean.listClaims}" var="c">
+<h:form>
+					<div class="gaps size-sep"></div>
+					<div class="box-flat pd-x3">
+						<div class="row">
+							<div class="col-md-9 col-sm-8 res-s-bttm">
+								<div class="schedule-details clearfix p-15 pt-30">
 								
-				             
-				                rows="5"
-				                paginator="true"
-				                paginatorPosition="bottom"
-				                selectionMode="single"
-				                selection="#{claimBean.listClaims}"
-				                rowKey="#{c.id}"
-				               
-				                widgetVar="prodTabW"
-                   	 
-                   	 value="#{claimBean.listClaims}" styleClass="table table-striped" var="c" >
-		<h:column>
-			<f:facet name="header">Title</f:facet>
-			<h:outputText value="#{c.title}" />
-		</h:column>
-		<h:column>
-			<f:facet name="header">Date</f:facet>
-			<h:outputText value="#{c.date}" />
-		</h:column>
-		<h:column>
-			<f:facet name="header">Place</f:facet>
-			<h:outputText value="#{c.place}" />
-		</h:column>
-		<h:column>
-			<f:facet name="header">Status</f:facet>
-			<h:outputText value="#{c.status}" />
-		</h:column>
-		<h:column>
-			<f:facet name="header">action</f:facet>
-			<h:form>
-			 
-			<h:commandLink  action="#{claimBean.navToClaim()}">
-    <i Class="glyphicon glyphicon-eye-open"></i>
-    <f:setPropertyActionListener value="#{c}"
-						target="#{claimBean.claim}" />
-</h:commandLink>
-<h:commandLink  action="#{claimBean.doDelete()}">
-    <i Class="glyphicon glyphicon-trash"></i>
-    <f:setPropertyActionListener value="#{c}"
-						target="#{claimBean.claim}" />
-</h:commandLink>
-<h:commandLink  action="#{claimBean.navUpdate()}" >
-    <i Class="glyphicon glyphicon-edit">
-    <f:setPropertyActionListener value="#{c}"
-						target="#{claimBean.claim}" /></i>
-</h:commandLink>
-				
-			</h:form>
-		</h:column>
-	</h:dataTable>
-            </div>
-            
-            <h:form><h:commandButton  action="#{claimBean.navCreate()}" value="Add Claim" styleClass="btn solid-btn sb-h" /></h:form>
-        </div>
-    </div>   </div>       	
-	</ui:define>	
+									<h3 class="title mt-0">
+										<a href="#">#{c.title}</a>
+									</h3>
+									<ul class="list-inline text-gray">
+										<li><i class="fa fa-calendar mr-5"></i>#{c.date}</li>
+										<li><i class="fa fa-map-marker mr-5"></i> #{c.place}</li>
+									</ul>
+									<div class="clearfix"></div>
+									<p class="mt-10">#{c.description}</p>
+
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-4">
+								<div class="icon-box size-md icon-aside icon-inline">
+									<em class="fa fa-car"></em>
+								</div>
+								<p class="small">
+									<strong>#{c.status}</strong>
+								</p>
+							</div>
+						</div>
+						<hr class="hr-sm" />
+						<div class="mt-10">
+
+							<h:commandButton value="Details"
+								action="#{claimBean.navToClaim()}"
+								styleClass="btn btn-default btn-sm mt-10">
+
+								<f:setPropertyActionListener value="#{c}"
+									target="#{claimBean.claim}" />
+							</h:commandButton>
+						</div>
+					</div></h:form>
+				</ui:repeat>
+			</div>
+		</div>
+	</ui:define>
+
 </ui:composition>
 
 

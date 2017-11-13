@@ -1,0 +1,51 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+                <table class="table table-s1 table-claim table-bordered table-vertical">
+							<tbody>
+								<tr>
+									<td>
+									<strong>WorkForce</strong>
+
+										
+									</td>
+									<td>
+										<strong>value</strong>
+
+					
+									
+					
+									</td>
+								
+									
+								</tr><tr>	<td>
+										<p><strong>Auto estimated Price before Claim</strong></p>
+
+									</td>
+									<td>
+										<p>#{claimBean.claim.estimation.valueBefore}</p>
+									</td>
+								</tr>
+									<tr>
+									<td>
+										<p><strong>Auto estimated Price after Claim</strong></p>
+
+									</td>
+									<td>
+										<p>#{claimBean.claim.estimation.valueAfter}</p>
+									</td>
+								</tr>
+									<tr>
+									<td>
+										<p><strong>Claim value</strong></p>
+
+									</td>
+									<td>
+										<p>#{claimBean.claim.estimation.valueClam}</p>
+									</td>
+							</tr>
+							</tbody>
+						</table>
+
+</ui:composition>

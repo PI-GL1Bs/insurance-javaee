@@ -30,15 +30,20 @@
 					</div>
 
 <h:form>
-					<h:selectOneMenu value="#{claimBean.claim.status}">
+					<h:selectOneMenu rendered="#{claimBean.formDisplayed3}" value="#{claimBean.claim.status}">
 						<f:selectItem itemValue="Accept" itemLabel="Accept" />
 						<f:selectItem itemValue="Reject" itemLabel="Reject" />
 					</h:selectOneMenu>
-					<h:commandButton value="Submit"
-						action="#{claimBean.ValideAction()}" />
+					<h:commandButton rendered="#{claimBean.formDisplayed3}" value="OK"
+StyleClass="btn solid-btn sb-h" action="#{claimBean.ValideAction()}" />
 
 					</h:form></div>
-
+ <h:form rendered="#{claimBean.formDisplayed1}">
+						<div class="col-md-6 col-sm-6 pad-l-md">	 
+					<ui:include src="/ClaimPages/EstimationTable.xhtml" />	</div>
+					<div class="col-md-6 col-sm-6 pad-l-md">	 
+					<ui:include src="/ClaimPages/EstimationTable2.xhtml" />	</div>
+					</h:form>	
 				</div>
 			</div>
 	</ui:define>

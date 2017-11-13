@@ -1,0 +1,155 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml">
+
+
+	<ui:define name="pageContent">
+	<h:form>
+		<div class="section section-content section-pad bdr-top">
+			<div class="container">
+				<div class="col-md-12">
+					<h2>ESTIMATION</h2>
+					<div class="col-md-4">
+						<div class="wgs-box boxed bg-primary light">
+							<div class="wgs-content">
+								<h3>Witnesses</h3>
+								<h:form>
+									<div class="form-results"></div>
+									<div class="form-group row">
+										<div class="form-field col-md-12 form-m-bttm">
+											<h:outputText value="valeur avant sinistr" />
+											<h:inputText value="#{estimationBean.estimation.valueBefore}" styleClass="form-control">
+												<f:convertNumber></f:convertNumber>
+											</h:inputText>
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="form-field col-md-12 form-m-bttm">
+
+											<h:outputText value="valeur venale" />
+											<h:inputText value="#{estimationBean.estimation.valueAfter}" styleClass="form-control">
+												<f:convertNumber></f:convertNumber>
+											</h:inputText>
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="form-field col-md-12 form-m-bttm">
+											<h:outputText value="valeur resudielle" />
+											<h:outputText rendered="#{estimationBean.formDisplayed2}"
+										value="valeur resudielle= #{estimationBean.estimation.valueClam}DT" />
+										</div>
+									</div>
+<h:commandButton
+										action="#{estimationBean.doCalculClaimValue()}" value="ClaimValue"
+										styleClass="btn solid-btn sb-h">  <f:ajax execute="@form" render="@form" /></h:commandButton>
+								
+								
+									
+							
+
+
+									
+								</h:form>
+
+							</div>
+
+
+						</div>
+					</div>
+					<div class="col-md-8">
+						<div class="wgs-box boxed bg-primary light">
+							<div class="wgs-content">
+								<h3>WORKFORCE</h3>
+								<h:form >
+									<div class="form-results"></div>
+									<div class="form-group row">
+										<div class="form-field col-md-6 form-m-bttm">
+											<h:outputText value="sheet metal workshop" />
+											<h:inputText value="#{estimationBean.estimation.sheetMetalWorkshop}"
+												styleClass="form-control">
+												<f:convertNumber></f:convertNumber>
+											</h:inputText>
+										</div>
+										<div class="form-field col-md-6">
+											<h:outputText value="Mechanical " />
+											<h:inputText value="#{estimationBean.estimation.mechanical}"
+												styleClass="form-control">
+												<f:convertNumber></f:convertNumber>
+											</h:inputText>
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="form-field col-md-6 form-m-bttm">
+											<h:outputText value="electricity " />
+											<h:inputText
+												value="#{estimationBean.estimation.electricity}"
+												styleClass="form-control">
+												<f:convertNumber></f:convertNumber>
+											</h:inputText>
+										</div>
+										<div class="form-field col-md-6">
+											<h:outputText value="Tapestry " />
+											<h:inputText value="#{estimationBean.estimation.tapestry}"
+												styleClass="form-control">
+												<f:convertNumber></f:convertNumber>
+											</h:inputText>
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="form-field col-md-6 form-m-bttm">
+											<h:outputText value="Woodwork " />
+											<h:inputText value="#{estimationBean.estimation.woodwork}"
+												styleClass="form-control">
+												<f:convertNumber></f:convertNumber>
+											</h:inputText>
+										</div>
+										<div class="form-field col-md-6">
+											<h:outputText value="Painting " />
+											<h:inputText value="#{estimationBean.estimation.painting}"
+												styleClass="form-control">
+												<f:convertNumber></f:convertNumber>
+											</h:inputText>
+										</div>
+									</div>
+									<h:commandButton
+										action="#{estimationBean.doSCalculeWorkForce()}" value="Total"
+										styleClass="btn solid-btn sb-h"> <f:ajax execute="@form" render="@form" /></h:commandButton>
+								
+								
+									<h:outputText rendered="#{estimationBean.formDisplayed}"
+										value="Total= #{estimationBean.estimation.priceWorkForce}DT" />
+							
+
+</h:form>
+
+
+
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+				
+			</div><h:commandButton 
+										action="#{estimationBean.doResultEstimation()}" value="Show Result"
+										styleClass="btn solid-btn sb-h"><f:ajax execute="@form" render="@form" /></h:commandButton>
+								
+								
+									<h:outputText rendered="#{estimationBean.formDisplayed4}"
+										value="Total= #{estimationBean.estimation.result}DT" />
+		
+		<h:commandButton
+										action="#{estimationBean.doSave()}" value="Save and leave"
+										styleClass="btn solid-btn sb-h"></h:commandButton>
+										</div>
+								
+</h:form>
+
+							
+	</ui:define>
+
+
+</ui:composition>

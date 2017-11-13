@@ -1,0 +1,26 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+             template="/template/template.xhtml">
+              
+                 <ui:define name="pageTitle"></ui:define>
+	  
+	  <ui:define name="pageContent">
+	  <div class="container">
+			<div class="content row">
+
+				<div class="row">
+				<div class="col-md-3 col-sm-6 col-xs-6 even">
+
+							<ui:include src="/ClaimPages/EstimationTable.xhtml" />
+						</div>
+						<div class="col-md-8">
+							<ui:include src="/ClaimPages/EstimationTable2.xhtml" />
+             
+             </div>
+             </div>
+             </ui:define>
+           
+  		
+</ui:composition>

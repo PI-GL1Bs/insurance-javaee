@@ -1,40 +1,93 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-               	template="/template/template.xhtml">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml">
 
 	<ui:define name="claim">claimDetails</ui:define>
+
 	<ui:define name="pageContent">
-      <div class="section section-content section-pad bdr-top">
-        <div class="container">
-            <div class="content row">
-                <div class="wide-md center">
-                   
-                    <div class="gaps size-3x"></div>
-                </div>
-                
-                <div class="row row-vm reverses">
-                    <div class="col-md-6 col-sm-6 res-m-bttm pad-r-md">
-                        <a href="#"><img src="image/photo-md-a.jpg" alt=""></img></a>
-                    </div>
-                    <div class="col-md-6 col-sm-6 pad-l-md">
-                        <h2>#{claimBean.claim.title}</h2>
-                        <h:outputText value="#{claimBean.claim.description} " styleClass="lead"/>
-                        <p class="lead">#{claimBean.claim.description}</p>
-                        <h5> Location: #{claimBean.claim.place}</h5>
-                        <h5> Date:#{claimBean.claim.date}</h5>
-                       
-                    </div>
-                </div>
-                <h:form>
-                <h:commandButton  action="#{claimBean.doDelete()}" value="delete" styleClass="btn solid-btn sb-h" >
+
+		<h:form rendered="#{claimBean.formDisplayed1}">
+						<div class="alert alert-success" role="alert">your Claim is #{claimBean.claim.status}</div>
+					</h:form>
+
+					<h:form rendered="#{claimBean.formDisplayed2}">
+						<div class="alert alert-info" role="alert"> your Claim is #{claimBean.claim.status}</div>
+					</h:form>
+					<h:form rendered="#{claimBean.formDisplayed6}">
+						<div class="alert alert-warning" role="alert">your Claim is #{claimBean.claim.status}</div>
+					</h:form>
+					<h:form rendered="#{claimBean.formDisplayed5}">
+						<div class="alert alert-danger" role="alert"> your Claim is #{claimBean.claim.status}</div>
+					</h:form>
+							<h:form rendered="#{claimBean.formDisplayed1}">
+	<div class="call-action bg-secondary">
+		<div class="cta-block">
+			<div class="container">
+				<div class="content row">
+       <h:form rendered="#{claimBean.formDisplayed1}">
+					<div class="cta-sameline">
+						<h4>#{claimBean.claim.estimation.result}</h4>
+						<h:commandButton  value="View Details" action="#{claimBean.NavtoDetails()}"
+					styleClass="btn btn-outline"> <f:ajax execute="@form" render="@form" />
 							</h:commandButton>
-			<h:commandButton  action="#{claimBean.navUpdate()}" value="update" styleClass="btn solid-btn sb-h" >
-							</h:commandButton></h:form>
-						
-            </div>
-        </div>
-    </div>          	
-	</ui:define>	
+					</div>
+					</h:form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	</h:form>
+		<div class="section section-content section-pad bdr-top">
+			<div class="container">
+				<div class="content row">
+					<div class="wide-md center">
+
+						<div class="gaps size-3x"></div>
+					</div>
+
+					<div class="row row-vm reverses">
+						<div class="col-md-6 col-sm-6 res-m-bttm pad-r-md">
+							<a href="#"><img src="image/photo-md-a.jpg" alt=""></img></a>
+						</div>
+						<div class="col-md-6 col-sm-6 pad-l-md">
+							<h2>#{claimBean.claim.title}</h2>
+							<ul class="list-inline text-gray">
+								<li><i class="fa fa-calendar mr-5"></i>#{claimBean.claim.date}</li>
+								<li><i class="fa fa-map-marker mr-5"></i>
+									#{claimBean.claim.place}</li>
+							</ul>
+							<h:outputText value="#{claimBean.claim.description} "
+								styleClass="lead" />
+							<p class="lead">#{claimBean.claim.description}</p>
+							<p class="lead">#{claimBean.claim.description}</p>
+
+						</div>
+
+					</div>
+
+				
+
+					<h:form>
+						<hr class="hr-sm" />
+						<div class="mt-10">
+							<h:commandButton rendered="#{claimBean.formDisplayed2}"
+								action="#{claimBean.doDelete()}" value="delete"
+								styleClass="btn btn-default btn-sm mt-10">&#xa0;
+							</h:commandButton>
+							<h:commandButton rendered="#{claimBean.formDisplayed3}"
+								action="#{claimBean.navUpdate()}" value="update"
+								styleClass="btn btn-default btn-sm mt-10">
+							</h:commandButton>
+
+						</div>
+
+					</h:form>
+					
+				</div>
+			</div>
+		</div>
+	</ui:define>
 </ui:composition>
