@@ -5,13 +5,31 @@
 	template="/template/template.xhtml">
 	<ui:define name="titleContent">Add contract</ui:define>
 	<ui:define name="pageContent">
-	<f:metadata>
-    	<f:viewAction action="#{contractBean.init()}" />
-	</f:metadata>
+		<f:metadata>
+			<f:viewAction action="#{contractBean.init()}" />
+		</f:metadata>
 
 
 		<h:form id="form_contract" styleClass="form-message">
 			<div class="form-results"></div>
+
+			<div class="form-group row">
+				<div class="form-field col-md-6 form-m-bttm">
+					<h:outputText value="First name" />
+					<h:inputText value="#{contractBean.insured.firstName}"
+						styleClass="form-control required" />
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<div class="form-field col-md-6 form-m-bttm">
+					<h:outputText value="Last Name" />
+					<h:inputText value="#{contractBean.insured.lastName}"
+						styleClass="form-control required" />
+				</div>
+			</div>
+
+
 			<div class="form-group row">
 				<div class="form-field col-md-6 form-m-bttm">
 					<h:outputText value="Marque car" />

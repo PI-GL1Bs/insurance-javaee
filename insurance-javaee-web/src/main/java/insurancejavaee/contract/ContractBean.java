@@ -2,6 +2,7 @@ package insurancejavaee.contract;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -14,6 +15,7 @@ import domain.Insured;
 import domain.Police;
 import services.CarServiceLocal;
 import services.ContractServiceLocal;
+import services.InsuredServiceLocal;
 
 @ManagedBean
 @ApplicationScoped
@@ -23,6 +25,8 @@ public class ContractBean {
 	private ContractServiceLocal cm;
 	@EJB
 	private CarServiceLocal carser;
+	@EJB
+	private InsuredServiceLocal insurser;
 	private Car car;
 	private Insured insured;
 	private Contract contract;
@@ -40,8 +44,11 @@ public class ContractBean {
 	@PostConstruct
 	public void init() {
 		car = new Car();
-		contract = new Contract();
 		insured = new Insured();
+		insured.setTel(555);
+		insured.setDateOfContract(new Date());
+
+		contract = new Contract();
 		listContract = cm.findAllContracts();
 	}
 
@@ -67,11 +74,13 @@ public class ContractBean {
 
 	public String addContract() {
 		String navTo = "addcontract?faces-redirect=true";
-		
+
+		if (insurser.create(insured) != null ){
 		if (carser.addCar(car) != null) {
 
 			Contract c = new Contract();
 			c.setCar(car);
+			c.setInsured(insured);
 			c.setPolice(5);
 			if (cm.create(c) != null) {
 				car.setContract(c);
@@ -80,7 +89,7 @@ public class ContractBean {
 				navTo = "listcontracts?faces-redirect=true";
 
 			}
-		}
+		}}
 		;
 
 		return navTo;
@@ -102,5 +111,13 @@ public class ContractBean {
 	 public void setContract(Contract contract) {
 	 this.contract = contract;
 	 }
+
+	public Insured getInsured() {
+		return insured;
+	}
+
+	public void setInsured(Insured insured) {
+		this.insured = insured;
+	}
 
 }
