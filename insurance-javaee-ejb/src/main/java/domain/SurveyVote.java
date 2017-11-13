@@ -13,9 +13,11 @@ public class SurveyVote implements Serializable {
 
 	   
 	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private int idSurveyVote;
 	private static final long serialVersionUID = 1L;
-
+    private String vote ; 
+	
 	@ManyToOne
 	private Insured insured ;
 	@ManyToOne
@@ -37,5 +39,28 @@ public class SurveyVote implements Serializable {
 	public void setIdSurvey(int idSurvey) {
 		this.idSurveyVote = idSurvey;
 	}
+	public int getIdSurveyVote() {
+		return idSurveyVote;
+	}
+	public void setIdSurveyVote(int idSurveyVote) {
+		this.idSurveyVote = idSurveyVote;
+	}
+	public String getVote() {
+		return vote;
+	}
+	public void setVote(String vote) {
+		this.vote = vote;
+	}
+	public Survey getSurvey() {
+		return survey;
+	}
+	public void setSurvey(Survey survey) {
+		this.survey = survey;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
    
+	
+	
 }

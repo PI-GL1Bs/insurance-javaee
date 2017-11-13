@@ -17,38 +17,46 @@ import domain.Survey;
 public class SurveyService implements SurveyServiceRemote, SurveyServiceLocal {
 	@PersistenceContext
 	private EntityManager em;
-    /**
-     * Default constructor. 
-     */
-    public SurveyService() {
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * Default constructor.
+	 */
+	public SurveyService() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public void addSurvey(Survey i) {
 		em.merge(i);
 	}
-	@Override
-	public void updateClaim(Survey i) {
-		em.merge(i);
-	}
-	@Override
-	public Survey findClaim(int i) {
-		return  em.find(Survey.class,i);
-	}
-	@Override
-	public void deleteClaim(Survey i) {
-		em.remove(em.merge(i));
-		
-	}
+
 	@Override
 	public List<Survey> findAllSurvey() {
-		return em.createQuery("select s from Survey s", Survey.class)
+		return em.createQuery("select s from Survey s", Survey.class).getResultList();
+	}
+
+	@Override
+	public void updateSurvey(Survey i) {
+		em.merge(i);
+
+	}
+
+	@Override
+	public Survey findSurvey(int i) {
+		return em.find(Survey.class, i);
+	}
+
+	@Override
+	public void deleteSurvey(Survey i) {
+		em.remove(em.merge(i));
+
+	}
+
+	@Override
+	public List<Survey> findAllSurveyByDate() {
+		return em.createQuery("select s from Survey s  where endDate >= cast((now()) as date)", Survey.class)
 				.getResultList();
 	}
+	
+	
 }
-	
-	
-
-
-	
-	

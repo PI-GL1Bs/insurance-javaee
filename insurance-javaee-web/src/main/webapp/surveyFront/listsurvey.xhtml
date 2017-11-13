@@ -11,11 +11,11 @@
 				<div class="content row">
 					<div class="wide-md center">
 						<h2>List of survey</h2>
-						<h:dataTable emptyMessage="no surveys found!" rows="5"
+						<h:dataTable emptyMessage="no surveys found!" rows="4"
 							paginator="true" paginatorPosition="bottom"
-							selectionMode="single" selection="#{surveyBean.listSurvey}"
+							selectionMode="single" selection="#{surveyBean.listSurveyFront}"
 							rowKey="#{c.id}" widgetVar="prodTabW"
-							value="#{surveyBean.listSurvey}" styleClass="table table-striped"
+							value="#{surveyBean.listSurveyFront}" styleClass="table table-striped"
 							var="c">
 							<h:column>
 								<f:facet name="header">description</f:facet>
@@ -28,26 +28,21 @@
 							</h:column>
 
 							<h:column>
-								<f:facet name="header">action</f:facet>
+								<f:facet name="header">type of response </f:facet>
+								<h:outputText value="oui/non" />
+							</h:column>
+
+
+							<h:column>
+								<f:facet name="header">vote</f:facet>
 								<h:form>
 
-									<h:commandLink action="#{surveyBean.navToSurvey()}">
-										<i Class="glyphicon glyphicon-eye-open"></i>
-										<f:setPropertyActionListener value="#{c}"
-											target="#{surveyBean.survey}" />
-									</h:commandLink>
-
-
-									<h:commandLink action="#{surveyBean.doDelete()}">
-										<i Class="glyphicon glyphicon-trash"></i>
-										<f:setPropertyActionListener value="#{c}"
-											target="#{surveyBean.survey}" />
-									</h:commandLink>
-
-									<h:commandLink action="#{surveyBean.navUpdate()}">
-										<i Class="glyphicon glyphicon-edit"> <f:setPropertyActionListener
+									<h:commandLink action="#{surveyBean.navDetailsSurvaysFront()}">
+										<i class="fa fa-arrow-circle-right"> <f:setPropertyActionListener
 												value="#{c}" target="#{surveyBean.survey}" /></i>
 									</h:commandLink>
+
+								
 
 								</h:form>
 							</h:column>
@@ -55,13 +50,11 @@
 						</h:dataTable>
 
 					</div>
-					
-					<h:form>
-						<h:commandButton action="#{surveyBean.navCreate()}"
-							value="Add Survey" styleClass="btn solid-btn sb-h" />
-					</h:form>
-					
-					
+
+
+
+
+
 				</div>
 			</div>
 		</div>
