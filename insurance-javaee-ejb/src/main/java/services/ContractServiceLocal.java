@@ -10,7 +10,7 @@ import domain.Contract;
 public interface ContractServiceLocal {
 	
 	Contract create(Contract c );
-	void update(Contract c );
+	void save(Contract c );
 	void delete(Contract c );
 	List<Contract> findAllContracts();
 	Contract getLast();

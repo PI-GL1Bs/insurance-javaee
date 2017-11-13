@@ -26,14 +26,14 @@ public class ContractService implements ContractServiceLocal {
 	}
 
 	@Override
-	public void update(Contract c) {
+	public void save(Contract c) {
 		em.merge(c);
 
 	}
 
 	@Override
 	public void delete(Contract c) {
-		em.remove(c);
+		em.remove(em.merge(c));
 
 	}
 

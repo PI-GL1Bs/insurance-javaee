@@ -4,15 +4,16 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	template="/template/template.xhtml">
 
-	<ui:define name="claim">Contracts List</ui:define>
+	<ui:define name="titleContent">Contract list</ui:define>
 	<ui:define name="pageContent">
 		<div class="section section-content section-pad bdr-top">
 			<div class="container">
 				<div class="content row">
 					<div class="wide-md center">
+					
+
 						<h2>Contract</h2>
-						<h:commandButton action="addcontract?faces-redirect=true"
-							value="Add Contract" styleClass="btn solid-btn sb-h" />
+
 						<h:dataTable emptyMessage="no contract found!" rows="5"
 							paginator="true" paginatorPosition="bottom"
 							selectionMode="single" selection="#{contractBean.listContract}"
@@ -47,14 +48,42 @@
 							</h:column>
 
 
-						</h:dataTable>
 
+
+							<h:column>
+								<f:facet name="header">action</f:facet>
+								<h:form>
+
+									<h:commandLink action="#{contractBean.doDelete()}">
+										<i Class="glyphicon glyphicon-trash"></i>
+										<f:setPropertyActionListener value="#{c}"
+											target="#{contractBean.contract}" />
+									</h:commandLink>
+									<h:commandLink action="#{contractBean.doUpdate()}">
+										<i Class="glyphicon glyphicon-edit"> <f:setPropertyActionListener
+												value="#{c}" target="#{contractBean.contract}" /></i>
+									</h:commandLink>
+
+								</h:form>
+							</h:column>
+						</h:dataTable>
 					</div>
+
+					<h:form>
+						<h:commandButton action="addcontract?faces-redirect=true"
+							value="Add Contract" styleClass="btn solid-btn sb-h" />
+					</h:form>
 				</div>
 			</div>
 		</div>
 	</ui:define>
 </ui:composition>
+
+
+
+
+
+
 
 
 

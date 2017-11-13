@@ -47,6 +47,23 @@ public class ContractBean {
 
 	public ContractBean() {
 	}
+	
+	
+	public String doSave() {
+		cm.save(contract);
+		listContract = cm.findAllContracts();
+		return "listcontracts?faces-redirect=true";
+	}
+	
+	public void doDelete() {
+		cm.delete(contract);
+		listContract = cm.findAllContracts();
+	}
+	
+	public String doUpdate() {
+		return "addcontract?faces-redirect=true";
+		
+	}
 
 	public String addContract() {
 		String navTo = "addcontract?faces-redirect=true";
