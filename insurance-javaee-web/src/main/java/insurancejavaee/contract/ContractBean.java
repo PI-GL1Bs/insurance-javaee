@@ -10,6 +10,7 @@ import javax.faces.bean.ManagedBean;
 
 import domain.Car;
 import domain.Contract;
+import domain.Insured;
 import domain.Police;
 import services.CarServiceLocal;
 import services.ContractServiceLocal;
@@ -23,6 +24,7 @@ public class ContractBean {
 	@EJB
 	private CarServiceLocal carser;
 	private Car car;
+	private Insured insured;
 	private Contract contract;
 	private List<Contract> listContract = new ArrayList<Contract>() ;
 
@@ -39,6 +41,7 @@ public class ContractBean {
 	public void init() {
 		car = new Car();
 		contract = new Contract();
+		insured = new Insured();
 		listContract = cm.findAllContracts();
 	}
 
@@ -46,18 +49,18 @@ public class ContractBean {
 	}
 
 	public String addContract() {
-		String navTo = "";
-
+		String navTo = "addcontract?faces-redirect=true";
+		
 		if (carser.addCar(car) != null) {
 
 			Contract c = new Contract();
 			c.setCar(car);
-			c.setPolice(new Police());
+			c.setPolice(5);
 			if (cm.create(c) != null) {
 				car.setContract(c);
 				carser.update(car);
 
-				navTo = "contracts?faces-redirect=true";
+				navTo = "listcontracts?faces-redirect=true";
 
 			}
 		}

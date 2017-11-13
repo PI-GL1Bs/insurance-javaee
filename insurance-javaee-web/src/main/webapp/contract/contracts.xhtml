@@ -1,35 +1,89 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-                template="/template/template.xhtml">
-                	
-			<ui:define name="titleContent">Contracts</ui:define>		
-			<ui:define name="pageContent">
-			<table class="table table-s1 table-claim table-bordered table-vertical">
-							<tbody>
-								<tr>
-									<td>
-										<p><a href="#"><strong>File a claim online</strong></a><br>
-										OR</br>
-										<strong>1-800-123-9876</strong></p>
-									</td>
-									<td>
-										<p>Report an insurance claim for consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<p><a href="#"><strong>File a claim online</strong></a>
-										OR<br/></p>
-										<strong>800-123-6789</strong><br/>
-										<p><small>Monday-Friday 8am-7pm EST</small></p>
-									</td>
-									<td>
-										<p>Ut enim ad minim veniam quis nostrud exercitation ullamco labor.</p>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-			</ui:define>
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml">
+	
+	<ui:define name="titleContent">Contracts </ui:define>
+	<ui:define name="pageContent">
+		<div class="section section-contents section-contact section-pad">
+			<div class="container">
+				<div class="content row">
+
+					<div class="row">
+						<div class="col-md-8">
+							<h2>Contracts</h2>
+							<h3>List of Contracts </h3>
+							<h:form>
+								<h:commandButton action="addreunion?faces-redirect=true"
+									value="Add Meeting" styleClass="btn solid-btn sb-h" />
+								<h:dataTable value="#{contractBean.listContract}" var="contract"
+									styleClass="table table-s1 table-claim table-bordered table-vertical">
+									<tbody>
+										<h:column>
+
+											<br />
+											<br />
+											<strong><h:outputText value="#{contract.car.modele}" /></strong>
+										</h:column>
+										<h:column>
+											<h:outputText value="#{contract.car.matricule}" />
+										</h:column>
+									</tbody>
+								</h:dataTable>
+							</h:form>
+
+							<h4 class="color-primary">What You Need</h4>
+							<p>To help make the insurance claim consectetur adipiscing
+								elit sed do eiusmod tempor incididunt:</p>
+							<ul class="list-style checkmark">
+								<li>Customer's name and address</li>
+								<li>The policy number</li>
+								<li>The date the loss happened</li>
+							</ul>
+						</div>
+						<!-- // -->
+						<div class="col-md-4">
+
+							<div class="sidebar-right">
+								<div class="wgs-box boxed boxed-flat">
+									<div class="wgs-content">
+										<h5>How Insurance Protects You</h5>
+										<p>Insurance helps offer financial protection to sed do
+											eiusmod tempor incidint ut labore magna aliqua quis nostrud.</p>
+										<p>
+											<a href="#" class="btn-link link-arrow-sm">Visit all
+												insurances sevices</a>
+										</p>
+									</div>
+								</div>
+								<!-- // -->
+								<div class="wgs-box boxed boxed-flat">
+									<div class="wgs-content">
+										<h5>Frequently Asked Questions</h5>
+										<p>Common questions about personal, commercial, autos and
+											our insurance services.</p>
+										<p>
+											<a href="#" class="btn-link link-arrow-sm">Read Faq's</a>
+										</p>
+									</div>
+								</div>
+								<!-- // -->
+								<div class="wgs-box boxed light bg-primary">
+									<div class="wgs-content">
+										<h3>Get a Quote</h3>
+										<p>Age 50+? Discover great savings and benefits with the
+											Insurance Pro from Us.</p>
+										<a href="#" class="btn btn-light btn-alt">Start Quote</a>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</ui:define>
 </ui:composition>

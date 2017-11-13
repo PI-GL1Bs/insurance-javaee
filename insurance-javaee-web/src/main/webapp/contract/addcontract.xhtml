@@ -10,7 +10,7 @@
 	</f:metadata>
 
 
-		<h:form id="form_meeting" styleClass="form-message">
+		<h:form id="form_contract" styleClass="form-message">
 			<div class="form-results"></div>
 			<div class="form-group row">
 				<div class="form-field col-md-6 form-m-bttm">
@@ -18,13 +18,18 @@
 					<h:inputText value="#{contractBean.car.marque}"
 						styleClass="form-control required" />
 				</div>
+			</div>
 
+			<div class="form-group row">
 				<div class="form-field col-md-6 form-m-bttm">
 					<h:outputText value="modele car" />
 					<h:inputText value="#{contractBean.car.modele}"
 						styleClass="form-control required" />
 				</div>
+			</div>
 
+
+			<div class="form-group row">
 				<div class="form-field col-md-6 form-m-bttm">
 					<h:outputText value="matricule car" />
 					<h:inputText value="#{contractBean.car.matricule}"
@@ -32,18 +37,13 @@
 				</div>
 			</div>
 
+
 			<h:commandButton action="#{contractBean.addContract()}"
 				value="Create" styleClass="btn solid-btn sb-h" />
 		</h:form>
 
 
-		<div>
-			<img src="../resources/image/myimagechev.jpg" alt="" usemap="#Map" />
-			<map name="Map" id="Map">
-				<area alt="" title="" shape="poly"
-					coords="512,433,903,432,909,174,937,32,773,48,672,88,584,137,527,185,509,228,501,281" />
-			</map>
-		</div>
+
 
 	</ui:define>
 </ui:composition>

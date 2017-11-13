@@ -30,8 +30,9 @@ public class Contract implements Serializable {
 	private Car car;
 	@ManyToOne
 	private Log log;
-	@OneToOne
-	private Police police;
+//	@OneToOne
+//	private Police police;
+	private int police;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date creationdate;
@@ -86,11 +87,11 @@ public class Contract implements Serializable {
 		this.car = car;
 	}
 
-	public Police getPolice() {
+	public int getPolice() {
 		return police;
 	}
 
-	public void setPolice(Police police) {
+	public void setPolice(int police) {
 		this.police = police;
 	}
 
@@ -100,6 +101,14 @@ public class Contract implements Serializable {
 
 	public void setInsured(Insured insured) {
 		this.insured = insured;
+	}
+
+	public Date getCreationdate() {
+		return creationdate;
+	}
+
+	public void setCreationdate(Date creationdate) {
+		this.creationdate = creationdate;
 	}
 
 }

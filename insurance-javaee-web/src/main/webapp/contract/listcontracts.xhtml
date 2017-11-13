@@ -11,15 +11,35 @@
 				<div class="content row">
 					<div class="wide-md center">
 						<h2>Contract</h2>
+						<h:commandButton action="addcontract?faces-redirect=true"
+							value="Add Contract" styleClass="btn solid-btn sb-h" />
 						<h:dataTable emptyMessage="no contract found!" rows="5"
 							paginator="true" paginatorPosition="bottom"
 							selectionMode="single" selection="#{contractBean.listContract}"
 							rowKey="#{c.refContract}" widgetVar="prodTabW"
-							value="#{contractBean.listContract}" styleClass="table table-striped"
-							var="c">
+							value="#{contractBean.listContract}"
+							styleClass="table table-striped" var="c">
 							<h:column>
 								<f:facet name="header">name survey</f:facet>
 								<h:outputText value="#{c.insured.firstName}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">police</f:facet>
+								<h:outputText value="#{c.police}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">date</f:facet>
+								<h:outputText value="#{c.creationdate}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">modele car</f:facet>
+								<h:outputText value="#{c.car.modele}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">marque</f:facet>
+								<h:outputText value="#{c.car.marque}" />
 							</h:column>
 							<h:column>
 								<f:facet name="header">matricule car </f:facet>
@@ -32,7 +52,7 @@
 					</div>
 				</div>
 			</div>
-			</div>
+		</div>
 	</ui:define>
 </ui:composition>
 
