@@ -191,5 +191,8 @@ public class ClaimBean {
 		this.formDisplayed6 = formDisplayed6;
 	}
 	
-
+	public void damagePositionSave(String s ){
+		
+		claim.setDamagePostion(claim.getDamagePostion() + " / " + s);
+	}
 }

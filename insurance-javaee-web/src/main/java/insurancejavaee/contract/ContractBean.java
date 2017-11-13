@@ -76,7 +76,7 @@ public class ContractBean {
 			if (cm.create(c) != null) {
 				car.setContract(c);
 				carser.update(car);
-
+				listContract = cm.findAllContracts();
 				navTo = "listcontracts?faces-redirect=true";
 
 			}
