@@ -2,69 +2,102 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-                template="/template/template.xhtml">
-                <ui:define name="pageContent">
-                <div class="section section-contents section-contact section-pad">
-		<div class="container">
-			<div class="content row">
+	template="/template/template.xhtml">
+	<ui:define name="pageContent">
+		<div class="section section-contents section-contact section-pad">
+			<div class="container">
+				<div class="content row">
 
-				<div class="row">
-				<div class="col-md-3 col-sm-6 col-xs-6 even">
-						<!-- featured box -->
-						<a href="#">
-							<div class="feature boxed bg-primary">
-								<div class="fbox-content">
-									<div class="icon-box size-lg"><em class="fa fa-car"></em></div>
-									<h3>Report an Claim</h3>
-									<p>A team of insurance professionals who are there when you need them, 24 hours a day, seven days a week. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudan.</p>
+					<div class="row">
+						<div class="col-md-3 col-sm-6 col-xs-6 even">
+							<!-- featured box -->
+							<a href="#">
+								<div class="feature boxed bg-primary">
+									<div class="fbox-content">
+										<div class="icon-box size-lg">
+											<em class="fa fa-car"></em>
+										</div>
+										<h3>Report an Claim</h3>
+										<p>A team of insurance professionals who are there when
+											you need them, 24 hours a day, seven days a week. Sed ut
+											perspiciatis unde omnis iste natus error sit voluptatem
+											accusantium doloremque laudan.</p>
+									</div>
 								</div>
-							</div>
-						</a>
-						<!-- #end -->
-					</div>
-					<div class="col-md-8">
-						
-						<h:form >
-							<div class="form-results"></div>
-							<div class="form-group row">
-								<div class="form-field col-md-8">
-								    <h:outputText value="Title" />
-									<h:inputText value="#{claimBean.claim.title}"  styleClass="form-control required"/>
-								</div></div>
-							<div class="form-group row">
-								<div class="form-field col-md-8">
-								    <h:outputText value="Location" />
-									<h:inputText value="#{claimBean.claim.place}"  styleClass="form-control required"/>
-								</div></div>
+							</a>
+							<!-- #end -->
+						</div>
+						<div class="col-md-8">
+
+							<h:form>
+								<div class="form-results"></div>
 								<div class="form-group row">
-								<div class="form-field col-md-8">
-								<h:outputText value="Date" />
-									<h:inputText value="#{claimBean.claim.date}"  styleClass="form-control required"><f:convertDateTime pattern="dd/MM/yyyy" /></h:inputText>
+									<div class="form-field col-md-8">
+										<h:outputText value="Title" />
+										<h:inputText value="#{claimBean.claim.title}"
+											styleClass="form-control required" />
+									</div>
 								</div>
-							</div>
-							
-							
-				
-							<div class="form-group row">
-								<div class="form-field col-md-8">
-								<h:outputText value="Description" />
-									<h:inputTextarea value="#{claimBean.claim.description}" styleClass="txtarea form-control required"/>
+								<div class="form-group row">
+									<div class="form-field col-md-8">
+										<h:outputText value="Location" />
+										<h:inputText value="#{claimBean.claim.place}"
+											styleClass="form-control required" />
+									</div>
 								</div>
-							</div>
-							
-							<h:commandButton  action="#{claimBean.doSave()}" value="Report" styleClass="btn solid-btn sb-h" >
-						</h:commandButton>
-						
-						</h:form>       
-	
-	
-				
-						
-	
-							
-						</div></div></div></div>
+								<div class="form-group row">
+									<div class="form-field col-md-8">
+										<h:outputText value="Date" />
+										<h:inputText value="#{claimBean.claim.date}"
+											styleClass="form-control required">
+											<f:convertDateTime pattern="dd/MM/yyyy" />
+										</h:inputText>
+									</div>
+								</div>
 
-</div>
-</ui:define>
-			
+
+
+								<div class="form-group row">
+									<div class="form-field col-md-8">
+										<h:outputText  value="Description" />
+										<h:inputTextarea id= "dee" value="#{claimBean.claim.description}"
+											styleClass="txtarea form-control required" />
+									</div>
+								</div>
+
+								<img id="image" src="../resources/image/myimagechev.jpg"
+									usemap="#Map"></img>
+								<map name="Map" id="Map">
+									<area style="background-color: red;" alt="porte" 
+										onclick="" shape="poly"
+										coords="370,174,369,115,374,71,385,13,307,23,256,47,218,75,209,111,209,149,211,178" />
+									<area alt="porte2" shape="poly"
+										coords="389,13,376,79,371,110,374,175,473,175,489,141,505,125,521,112,521,80,509,54,498,38,476,23,444,16" />
+									<area alt="lampe"  shape="poly"
+										coords="290,350,224,360,240,340,276,328,292,332,296,346" />
+									<area alt="lampe2" shape="poly"
+										coords="96,362,29,348,30,332,60,328,82,337" />
+
+								</map>
+
+
+								<h:commandButton action="#{claimBean.doSave()}" value="Report"
+									styleClass="btn solid-btn sb-h">
+								</h:commandButton>
+
+							</h:form>
+
+
+
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</ui:define>
+
 </ui:composition>

@@ -1,6 +1,7 @@
 package domain;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
@@ -31,7 +32,16 @@ public class Contract implements Serializable {
 	private Log log;
 	@OneToOne
 	private Police police;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date creationdate;
 
+	
+	@PrePersist
+	public void meth(){
+		creationdate = new Date();
+	}
+	
 	public Log getLog() {
 		return log;
 	}

@@ -1,14 +1,16 @@
 package insurancejavaee.contract;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 
 import domain.Car;
 import domain.Contract;
-import domain.Reunion;
+import domain.Police;
 import services.CarServiceLocal;
 import services.ContractServiceLocal;
 
@@ -22,11 +24,22 @@ public class ContractBean {
 	private CarServiceLocal carser;
 	private Car car;
 	private Contract contract;
+	private List<Contract> listContract = new ArrayList<Contract>() ;
+
+
+	public List<Contract> getListContract() {
+		return listContract;
+	}
+
+	public void setListContract(List<Contract> listContract) {
+		this.listContract = listContract;
+	}
 
 	@PostConstruct
 	public void init() {
 		car = new Car();
 		contract = new Contract();
+		listContract = cm.findAllContracts();
 	}
 
 	public ContractBean() {
@@ -39,7 +52,7 @@ public class ContractBean {
 
 			Contract c = new Contract();
 			c.setCar(car);
-
+			c.setPolice(new Police());
 			if (cm.create(c) != null) {
 				car.setContract(c);
 				carser.update(car);
@@ -62,12 +75,12 @@ public class ContractBean {
 		this.car = car;
 	}
 
-	// public Contract getContract() {
-	// return contract;
-	// }
-	//
-	// public void setContract(Contract contract) {
-	// this.contract = contract;
-	// }
+	 public Contract getContract() {
+	 return contract;
+	 }
+	
+	 public void setContract(Contract contract) {
+	 this.contract = contract;
+	 }
 
 }
