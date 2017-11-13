@@ -67,13 +67,13 @@
 
 								<img id="image" src="../resources/image/myimagechev.jpg"
 									usemap="#Map"></img>
-								<map name="Map" id="Map">
-									<area style="background-color: red;" alt="porte" 
-										onclick="" shape="poly"
+								<map name="Map" id="Map" >
+									<area  alt="porte"
+										onclick="#{claimBean.damagePositionSave('porte')}" shape="poly"
 										coords="370,174,369,115,374,71,385,13,307,23,256,47,218,75,209,111,209,149,211,178" />
-									<area alt="porte2" shape="poly"
+									<area alt="porte2" shape="poly" onclick="#{claimBean.damagePositionSave('porte2')}"
 										coords="389,13,376,79,371,110,374,175,473,175,489,141,505,125,521,112,521,80,509,54,498,38,476,23,444,16" />
-									<area alt="lampe"  shape="poly"
+									<area alt="lampe"  shape="poly" onclick="#{claimBean.damagePositionSave('lampe ')}"
 										coords="290,350,224,360,240,340,276,328,292,332,296,346" />
 									<area alt="lampe2" shape="poly"
 										coords="96,362,29,348,30,332,60,328,82,337" />

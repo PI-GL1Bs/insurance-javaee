@@ -24,6 +24,7 @@ public class ClaimBean {
 
 	@PostConstruct
 	public void init() {
+		claim.setDamagePostion(" ");
 		listClaims = claimMangmentLocal.findAllClaims();
 	}
 
@@ -50,6 +51,11 @@ public class ClaimBean {
 	public String doSave() {
 		claimMangmentLocal.addClaim(claim);
 		return "/ClaimPages/Claim?faces-redirect=true";
+	}
+	
+	public void damagePositionSave(String s ){
+		
+		claim.setDamagePostion(claim.getDamagePostion() + " / " + s);
 	}
 
 	public String navCreate() {
