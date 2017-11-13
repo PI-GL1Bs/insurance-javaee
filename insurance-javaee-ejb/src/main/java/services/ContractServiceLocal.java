@@ -14,4 +14,5 @@ public interface ContractServiceLocal {
 	void delete(Contract c );
 	List<Contract> findAllContracts();
 	Contract getLast();
+	Contract findContractById(int id);
 }

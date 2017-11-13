@@ -1,0 +1,67 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml">
+	<ui:define name="titleContent">Add contract</ui:define>
+	<ui:define name="pageContent">
+		<f:metadata>
+			<f:viewAction action="#{contractBean.init()}" />
+		</f:metadata>
+
+
+		<h:form id="form_contract" styleClass="form-message">
+			<div class="form-results"></div>
+
+			<div class="form-group row">
+				<div class="form-field col-md-6 form-m-bttm">
+					<h:outputText value="First name" />
+					<h:inputText value="#{contractBean.insured.firstName}"
+						styleClass="form-control required" />
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<div class="form-field col-md-6 form-m-bttm">
+					<h:outputText value="Last Name" />
+					<h:inputText value="#{contractBean.insured.lastName}"
+						styleClass="form-control required" />
+				</div>
+			</div>
+
+
+			<div class="form-group row">
+				<div class="form-field col-md-6 form-m-bttm">
+					<h:outputText value="Marque car" />
+					<h:inputText value="#{contractBean.car.marque}"
+						styleClass="form-control required" />
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<div class="form-field col-md-6 form-m-bttm">
+					<h:outputText value="modele car" />
+					<h:inputText value="#{contractBean.car.modele}"
+						styleClass="form-control required" />
+				</div>
+			</div>
+
+
+			<div class="form-group row">
+				<div class="form-field col-md-6 form-m-bttm">
+					<h:outputText value="matricule car" />
+					<h:inputText value="#{contractBean.car.matricule}"
+						styleClass="form-control required" />
+				</div>
+			</div>
+
+
+			<h:commandButton action="#{contractBean.doSave()}"
+				value="Update" styleClass="btn solid-btn sb-h" />
+		</h:form>
+
+
+
+
+	</ui:define>
+</ui:composition>

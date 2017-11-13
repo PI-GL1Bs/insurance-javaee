@@ -57,6 +57,8 @@ public class ContractBean {
 	
 	
 	public String doSave() {
+		carser.update(car);
+		insurser.update(insured);
 		cm.save(contract);
 		listContract = cm.findAllContracts();
 		return "listcontracts?faces-redirect=true";
@@ -67,8 +69,20 @@ public class ContractBean {
 		listContract = cm.findAllContracts();
 	}
 	
-	public String doUpdate() {
-		return "addcontract?faces-redirect=true";
+	public String doUpdate(int id) {
+		Contract c = cm.findContractById(id);
+		contract.setCar(c.getCar());
+		contract.setCreationdate(c.getCreationdate());
+		contract.setInsured(c.getInsured());
+		contract.setRefContract(c.getRefContract());
+		
+		car.setIdCar(c.getCar().getIdCar());
+		car.setMarque(c.getCar().getMarque());
+		car.setMatricule(c.getCar().getMatricule());
+		car.setModele(c.getCar().getModele());
+		
+		insured = contract.getInsured();
+		return "updatecontract?faces-redirect=true";
 		
 	}
 

@@ -59,7 +59,7 @@
 										<f:setPropertyActionListener value="#{c}"
 											target="#{contractBean.contract}" />
 									</h:commandLink>
-									<h:commandLink action="#{contractBean.doUpdate()}">
+									<h:commandLink action="#{contractBean.doUpdate(c.refContract)}">
 										<i Class="glyphicon glyphicon-edit"> <f:setPropertyActionListener
 												value="#{c}" target="#{contractBean.contract}" /></i>
 									</h:commandLink>

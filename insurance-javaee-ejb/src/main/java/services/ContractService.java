@@ -7,9 +7,9 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import domain.Car;
+
 import domain.Contract;
-import domain.Reunion;
+
 
 @Stateless
 @LocalBean
@@ -47,6 +47,11 @@ public class ContractService implements ContractServiceLocal {
 	public Contract getLast() {
 		return em.createQuery("select c from Contract c  order by refContract", Contract.class)
 				.getResultList().get(0);
+	}
+
+	@Override
+	public Contract findContractById(int id) {
+		return em.find(Contract.class, id);
 	}
 
 }
