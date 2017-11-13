@@ -1,0 +1,75 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml">
+
+	<ui:define name="titleContent">Reclamation list</ui:define>
+	<ui:define name="pageContent">
+		<div class="section section-content section-pad bdr-top">
+			<div class="container">
+				<div class="content row">
+					<div class="wide-md center">
+						<h2>Report an Claim</h2>
+						<p>A team of insurance professionals who are there when you
+							need them, 24 hours a day, seven days a week. Sed ut perspiciatis
+							unde omnis iste natus error sit voluptatem accusantium doloremque
+							laudan.</p>
+						<h:dataTable emptyMessage="no data found!" rows="5"
+							paginator="true" paginatorPosition="bottom"
+							selectionMode="single" selection="#{reclamationBean.reclamations}"
+							rowKey="#{c.id}" widgetVar="prodTabW"
+							value="#{reclamationBean.reclamations}" styleClass="table table-striped"
+							var="c">
+							<h:column>
+								<f:facet name="header">Subject</f:facet>
+								<h:outputText value="#{c.subject}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">Description</f:facet>
+								<h:outputText value="#{c.description}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">Status</f:facet>
+								<h:outputText value="#{c.status}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">action</f:facet>
+								<h:form>
+
+									<h:commandLink action="#{reclamationBean.doDelete()}">
+										<i Class="glyphicon glyphicon-trash"></i>
+										<f:setPropertyActionListener value="#{c}"
+											target="#{reclamationBean.reclamation}" />
+									</h:commandLink>
+									<h:commandLink action="#{reclamationBean.doUpdate()}">
+										<i Class="glyphicon glyphicon-edit"> <f:setPropertyActionListener
+												value="#{c}" target="#{reclamationBean.reclamation}" /></i>
+									</h:commandLink>
+
+								</h:form>
+							</h:column>
+						</h:dataTable>
+					</div>
+
+					<h:form>
+						<h:commandButton action="#{reclamationBean.navCreate()}"
+							value="Add Reclamation" styleClass="btn solid-btn sb-h" />
+					</h:form>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
+
+
+
+
+
+
+
+
+
+
+
+

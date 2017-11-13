@@ -11,7 +11,7 @@ import domain.Reclamation;
 public interface ReclamationServiceLocal {
 
 	void create(Reclamation reclamation );
-	void update(Reclamation reclamation );
+	void save(Reclamation reclamation );
 	void delete(Reclamation reclamation );
 
 	List<Reclamation> findAll();

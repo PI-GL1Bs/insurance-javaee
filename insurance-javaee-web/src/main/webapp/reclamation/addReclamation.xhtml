@@ -1,0 +1,65 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml">
+	
+	<ui:define name="titleContent">Reclamation Creation</ui:define>
+	<ui:define name="pageContent">
+		<div class="section section-contents section-contact section-pad">
+			<div class="container">
+				<div class="content row">
+
+					<div class="row">
+						<div class="col-md-3 col-sm-6 col-xs-6 even">
+							<!-- featured box -->
+							<a href="#">
+								<div class="feature boxed bg-primary">
+									<div class="fbox-content">
+										<div class="icon-box size-lg">
+											<em class="fa fa-car"></em>
+										</div>
+										<h3>Create a Reclamation</h3>
+										<p>A team of insurance professionals who are there when
+											you need them, 24 hours a day, seven days a week. Sed ut
+											perspiciatis unde omnis iste natus error sit voluptatem
+											accusantium doloremque laudan.</p>
+									</div>
+								</div>
+							</a>
+							<!-- #end -->
+						</div>
+						<div class="col-md-8">
+
+							<h:form>
+								<div class="form-results"></div>
+								<div class="form-group row">
+									<div class="form-field col-md-8">
+										<h:outputText value="Subject" />
+										<h:inputText value="#{reclamationBean.reclamation.subject}"
+											styleClass="form-control required" />
+									</div>
+								</div>
+								<div class="form-group row">
+									<div class="form-field col-md-8">
+										<h:outputText value="Description" />
+										<h:inputTextarea cols="8" value="#{reclamationBean.reclamation.description}"
+											styleClass="form-control required" />
+									</div>
+								</div>
+								
+								<h:commandButton action="#{reclamationBean.doSave()}" value="Save"
+									styleClass="btn solid-btn sb-h">
+								</h:commandButton>
+
+							</h:form>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</ui:define>
+
+</ui:composition>

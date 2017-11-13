@@ -22,13 +22,13 @@ public class ReclamationService implements ReclamationServiceLocal {
 	}
 
 	@Override
-	public void update(Reclamation reclamation) {
+	public void save(Reclamation reclamation) {
 		em.merge(reclamation);
 	}
 
 	@Override
 	public void delete(Reclamation reclamation) {
-		em.remove(reclamation);
+		em.remove(em.merge(reclamation));
 	}
 
 	@Override
