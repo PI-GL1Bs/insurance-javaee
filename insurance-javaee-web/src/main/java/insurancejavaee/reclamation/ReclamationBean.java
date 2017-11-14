@@ -9,8 +9,10 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 
 import domain.Claim;
+import domain.Insured;
 import domain.Reclamation;
 import domain.Reunion;
+import services.InsuredServiceLocal;
 import services.ReclamationServiceLocal;
 
 @ManagedBean
@@ -19,6 +21,9 @@ public class ReclamationBean {
 	
 	@EJB
 	ReclamationServiceLocal catalog;
+	
+	@EJB
+	InsuredServiceLocal catalogInsured;
 	
 	private Reclamation reclamation = new Reclamation();
 	private List<Reclamation> reclamations;
@@ -33,6 +38,16 @@ public class ReclamationBean {
 	}
 
 	public String doSave() {
+		
+		if (reclamation.getInsured()==null){
+			Insured i = new Insured();
+			catalogInsured.create(i);
+			reclamation.setInsured(i);
+		}
+		
+		if (reclamation.getStatus()==null){
+			reclamation.setStatus("pending");
+		}
 		catalog.save(reclamation);
 		reclamations = catalog.findAll();
 		return "/reclamation/reclamations?faces-redirect=true";

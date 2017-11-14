@@ -37,14 +37,16 @@
 									<div class="form-field col-md-8">
 										<h:outputText value="Subject" />
 										<h:inputText value="#{reclamationBean.reclamation.subject}"
-											styleClass="form-control required" />
+											styleClass="form-control required" id="n1" required="true" requiredMessage="Subject is mandatory" />
+										<h:message showSummary="true" showDetail="false" id="errors1"  for="n1" style="color: red"/>
 									</div>
 								</div>
 								<div class="form-group row">
 									<div class="form-field col-md-8">
 										<h:outputText value="Description" />
 										<h:inputTextarea cols="8" value="#{reclamationBean.reclamation.description}"
-											styleClass="form-control required" />
+											styleClass="form-control required" id="n2"  required="true" requiredMessage="Description is mandatory" />
+										<h:message showSummary="true" showDetail="false" id="errors2"  for="n2" style="color: red"/>
 									</div>
 								</div>
 								
