@@ -1,5 +1,6 @@
 package insurancejavaee.reclamation;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -18,19 +19,19 @@ import services.ReclamationServiceLocal;
 @ManagedBean
 @SessionScoped
 public class ReclamationBean {
-	
+
 	@EJB
 	ReclamationServiceLocal catalog;
-	
+
 	@EJB
 	InsuredServiceLocal catalogInsured;
-	
+
 	private Reclamation reclamation = new Reclamation();
 	private List<Reclamation> reclamations;
-	
+
 	public ReclamationBean() {
 	}
-	
+
 	@PostConstruct
 	public void init() {
 		reclamation = new Reclamation();
@@ -38,31 +39,32 @@ public class ReclamationBean {
 	}
 
 	public String doSave() {
-		
-		if (reclamation.getInsured()==null){
+
+		if (reclamation.getInsured() == null) {
 			Insured i = new Insured();
 			catalogInsured.create(i);
 			reclamation.setInsured(i);
 		}
-		
-		if (reclamation.getStatus()==null){
+
+		if (reclamation.getStatus() == null) {
 			reclamation.setStatus("pending");
 		}
+		reclamation.setDateTime(new Date());
 		catalog.save(reclamation);
 		reclamations = catalog.findAll();
 		return "/reclamation/reclamations?faces-redirect=true";
 	}
-	
+
 	public void doDelete() {
 		catalog.delete(reclamation);
 		reclamations = catalog.findAll();
 	}
-	
+
 	public String doUpdate() {
 		return "/reclamation/addReclamation?faces-redirect=true";
-		
+
 	}
-	
+
 	public String navCreate() {
 		this.reclamation = new Reclamation();
 		return "/reclamation/addReclamation?faces-redirect=true";

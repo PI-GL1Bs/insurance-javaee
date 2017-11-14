@@ -16,7 +16,7 @@
 							paginator="true" paginatorPosition="bottom"
 							selectionMode="single" selection="#{reclamationBean.reclamations}"
 							rowKey="#{c.id}" widgetVar="prodTabW"
-							value="#{reclamationBean.reclamations}" styleClass="table table-striped"
+							value="#{reclamationBean.reclamations}" styleClass="table table-striped reclamation-table"
 							var="c">
 							<h:column>
 								<f:facet name="header">Subject</f:facet>
@@ -31,18 +31,25 @@
 								<h:outputText value="#{c.status}" />
 							</h:column>
 							<h:column>
+								<f:facet name="header">Last Update</f:facet>
+								<h:outputText value="#{c.dateTime}" >
+								    <f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+								</h:outputText>
+							</h:column>
+							<h:column>
 								<f:facet name="header">action</f:facet>
 								<h:form>
 
+									<h:commandLink action="#{reclamationBean.doUpdate()}">
+										<i Class="glyphicon glyphicon-edit"> <f:setPropertyActionListener
+												value="#{c}" target="#{reclamationBean.reclamation}" /></i>
+									</h:commandLink>
 									<h:commandLink action="#{reclamationBean.doDelete()}">
 										<i Class="glyphicon glyphicon-trash"></i>
 										<f:setPropertyActionListener value="#{c}"
 											target="#{reclamationBean.reclamation}" />
 									</h:commandLink>
-									<h:commandLink action="#{reclamationBean.doUpdate()}">
-										<i Class="glyphicon glyphicon-edit"> <f:setPropertyActionListener
-												value="#{c}" target="#{reclamationBean.reclamation}" /></i>
-									</h:commandLink>
+									
 
 								</h:form>
 							</h:column>
