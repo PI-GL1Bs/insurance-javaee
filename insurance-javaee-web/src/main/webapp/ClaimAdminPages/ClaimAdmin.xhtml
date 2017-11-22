@@ -4,8 +4,42 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	template="/template/template.xhtml">
 
-	<ui:define name="claim">claimDetails</ui:define>
+<ui:define name="claim">claimDetails</ui:define>
+
 	<ui:define name="pageContent">
+
+		<h:form rendered="#{claimBean.formDisplayed1}">
+						<div class="alert alert-success" role="alert">your Claim is #{claimBean.claim.status}</div>
+					</h:form>
+
+					<h:form rendered="#{claimBean.formDisplayed2}">
+						<div class="alert alert-info" role="alert"> your Claim is #{claimBean.claim.status}</div>
+					</h:form>
+					<h:form rendered="#{claimBean.formDisplayed6}">
+						<div class="alert alert-warning" role="alert">your Claim is #{claimBean.claim.status}</div>
+					</h:form>
+					<h:form rendered="#{claimBean.formDisplayed5}">
+						<div class="alert alert-danger" role="alert"> your Claim is #{claimBean.claim.status}</div>
+					</h:form>
+							<h:form rendered="#{claimBean.formDisplayed1}">
+	<div class="call-action bg-secondary">
+		<div class="cta-block">
+			<div class="container">
+				<div class="content row">
+       <h:form rendered="#{claimBean.formDisplayed1}">
+					<div class="cta-sameline">
+						<h4>#{claimBean.claim.estimation.result}</h4>
+						<h:commandButton  value="View Details" action="#{claimBean.NavtoDetails()}"
+					styleClass="btn btn-outline"> <f:ajax execute="@form" render="@form" />
+							</h:commandButton>
+					</div>
+					</h:form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	</h:form>
 		<div class="section section-content section-pad bdr-top">
 			<div class="container">
 				<div class="content row">
@@ -16,35 +50,41 @@
 
 					<div class="row row-vm reverses">
 						<div class="col-md-6 col-sm-6 res-m-bttm pad-r-md">
-							<a href="#"><img src="image/photo-md-a.jpg" alt=""></img></a>
+							<a href="#"><img src="image/photo-md-a.jpg" alt=""></img></a><img id="image" src="../resources/image/myimagechev.jpg"
+									usemap="#Map"></img>
 						</div>
 						<div class="col-md-6 col-sm-6 pad-l-md">
 							<h2>#{claimBean.claim.title}</h2>
+							<ul class="list-inline text-gray">
+								<li><i class="fa fa-calendar mr-5"></i>#{claimBean.claim.date}</li>
+								<li><i class="fa fa-map-marker mr-5"></i>
+									#{claimBean.claim.place}</li>
+							</ul>
 							<h:outputText value="#{claimBean.claim.description} "
 								styleClass="lead" />
 							<p class="lead">#{claimBean.claim.description}</p>
-							<h5>Location: #{claimBean.claim.place}</h5>
-							<h5>Date:#{claimBean.claim.date}</h5>
-
+							<p><strong>number of  vehicles damaged: </strong> #{claimBean.claim.nbCar}</p>
 						</div>
+
 					</div>
 
-<h:form>
+				<hr class="hr-sm" />
+
+					<h:form>
 					<h:selectOneMenu rendered="#{claimBean.formDisplayed3}" value="#{claimBean.claim.status}">
 						<f:selectItem itemValue="Accept" itemLabel="Accept" />
 						<f:selectItem itemValue="Reject" itemLabel="Reject" />
 					</h:selectOneMenu>
 					<h:commandButton rendered="#{claimBean.formDisplayed3}" value="OK"
-StyleClass="btn solid-btn sb-h" action="#{claimBean.ValideAction()}" />
+StyleClass="btn solid-btn sb-h" action="#{claimBean.ValideAction()}" styleClass="btn btn-default btn-sm mt-10" />
 
-					</h:form></div>
- <h:form rendered="#{claimBean.formDisplayed1}">
-						<div class="col-md-6 col-sm-6 pad-l-md">	 
-					<ui:include src="/ClaimPages/EstimationTable.xhtml" />	</div>
-					<div class="col-md-6 col-sm-6 pad-l-md">	 
-					<ui:include src="/ClaimPages/EstimationTable2.xhtml" />	</div>
-					</h:form>	
+					</h:form>
+					
 				</div>
 			</div>
+		</div>
 	</ui:define>
 </ui:composition>
+
+
+

@@ -14,7 +14,7 @@ public class EstimationService implements EstimationServiceLocal{
 	private EntityManager em ;
 	@Override
 	public void saveEstimation(Estimation i) {
-		em.merge(i);	
+		em.persist(i);	
 	}
 
 

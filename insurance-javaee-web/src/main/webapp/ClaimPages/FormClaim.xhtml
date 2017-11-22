@@ -4,68 +4,84 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	template="/template/template.xhtml">
 	<ui:define name="pageContent">
-		<div class="section section-contents section-contact section-pad">
-			<div class="container">
-				<div class="content row">
-
-					<div class="row">
-						<div class="col-md-3 col-sm-6 col-xs-6 even">
-							<!-- featured box -->
-							<a href="#">
-								<div class="feature boxed bg-primary">
-									<div class="fbox-content">
-										<div class="icon-box size-lg">
-											<em class="fa fa-car"></em>
-										</div>
-										<h3>Report an Claim</h3>
-										<p>A team of insurance professionals who are there when
-											you need them, 24 hours a day, seven days a week. Sed ut
-											perspiciatis unde omnis iste natus error sit voluptatem
-											accusantium doloremque laudan.</p>
-									</div>
-								</div>
-							</a>
-							<!-- #end -->
-						</div>
-						<div class="col-md-8">
-
-							<h:form>
-								<div class="form-results"></div>
-								<div class="form-group row">
-									<div class="form-field col-md-8">
-										<h:outputText value="Title" />
+	
+	<div class="section section-contents section-contact section-pad">
+		<div class="container">
+			<div class="content row">
+<h:form >
+				<div class="contact-content row">
+					<div class="drop-message col-md-8 pad-r res-m-bttm">
+	
+						<div class="gaps size-lg"></div>
+						<div class="clear"></div>
+						<h4>Complete and submit the form below -</h4>						
+						
+							<div class="form-results"></div>
+							<div class="form-group row">
+								<div class="form-field col-md-6 form-m-bttm">
+									<h:outputText value="title" />
 										<h:inputText value="#{claimBean.claim.title}"
-											styleClass="form-control required" />
-									</div>
+											styleClass="form-control required" id="login" required="true" requiredMessage=" required">
+							<f:ajax event="blur" execute="@this" render="msg_login" />
+						</h:inputText>
+						<h:message id="msg_login" for="login" styleClass="error"/>
 								</div>
-								<div class="form-group row">
-									<div class="form-field col-md-8">
-										<h:outputText value="Location" />
+								<div class="form-field col-md-6">
+									<h:outputText value="Location" />
 										<h:inputText value="#{claimBean.claim.place}"
-											styleClass="form-control required" />
-									</div>
+											styleClass="form-control required"  id="login1" required="true" requiredMessage=" required">
+							<f:ajax event="blur" execute="@this" render="msg_login1" />
+						</h:inputText>
+						<h:message id="msg_login1" for="login1" styleClass="error"/>
 								</div>
-								<div class="form-group row">
-									<div class="form-field col-md-8">
-										<h:outputText value="Date" />
-										<h:inputText value="#{claimBean.claim.date}"
-											styleClass="form-control required">
-											<f:convertDateTime pattern="dd/MM/yyyy" />
-										</h:inputText>
-									</div>
+							</div>
+							<div class="form-group row">
+								<div class="form-field col-md-6 form-m-bttm">
+								<h:outputText value="Date" />
+									<h:inputText value="#{claimBean.claim.date}" id="birthdate"
+											styleClass="form-control" converterMessage="Example: 17/12/2010">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+							<f:ajax event="blur" execute="@this" render="msg_birthdate" />
+						</h:inputText>
+						<h:message id="msg_birthdate" for="birthdate" styleClass="error"/>
 								</div>
-
-
-
-								<div class="form-group row">
-									<div class="form-field col-md-8">
-										<h:outputText  value="Description" />
-										<h:inputTextarea id= "dee" value="#{claimBean.claim.description}"
-											styleClass="txtarea form-control required" />
-									</div>
+								<div class="form-field col-md-6">
+									<h:outputText value="number of  vehicles damaged" />
+													<h:inputText value="#{claimBean.claim.nbCar}"
+														
+													 styleClass="form-control"  id="login2" required="true" requiredMessage=" required">
+							<f:ajax event="blur" execute="@this" render="msg_login2" />
+						</h:inputText>
+						<h:message id="msg_login2" for="login2" styleClass="error"/>
 								</div>
+							</div>
+						
 
-								<img id="image" src="../resources/image/myimagechev.jpg"
+							<div class="form-group row">
+								<div class="form-field col-md-12">
+									<h:outputText  value="Description" />
+										<h:inputTextarea  value="#{claimBean.claim.description}"
+											styleClass="txtarea form-control" id="login3" required="true" requiredMessage=" required">
+							<f:ajax event="blur" execute="@this" render="msg_login3" />
+						</h:inputTextarea>
+						<h:message id="msg_login3" for="login3" styleClass="error"/>
+								</div>
+							</div>
+							
+							
+							<h:commandButton action="#{claimBean.doSave()}" value="Report"
+									styleClass="btn solid-btn sb-h">
+								</h:commandButton>
+						
+					</div>
+					<div class="contact-maps col-md-4">
+						<!-- Map --><br/>
+						<br/>
+
+						<br/>
+
+						<br/>
+						<img id="image" src="../resources/image/myimagechev.jpg"
 									usemap="#Map"></img>
 								<map name="Map" id="Map" >
 									<area  alt="porte"
@@ -80,24 +96,21 @@
 
 								</map>
 
-
-								<h:commandButton action="#{claimBean.doSave()}" value="Report"
-									styleClass="btn solid-btn sb-h">
-								</h:commandButton>
-
-							</h:form>
-
-
-
-
-
-
-						</div>
-					</div>
+						<!-- End map -->
+					</div></div></h:form>
 				</div>
-			</div>
 
+			</div>
 		</div>
+
+	
+	
+	
+	
+	
+	
+	
+		
 	</ui:define>
 
 </ui:composition>

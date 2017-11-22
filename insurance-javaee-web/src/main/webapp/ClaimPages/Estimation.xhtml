@@ -1,26 +1,127 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-             template="/template/template.xhtml">
-              
-                 <ui:define name="pageTitle"></ui:define>
-	  
-	  <ui:define name="pageContent">
-	  <div class="container">
-			<div class="content row">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml">
 
-				<div class="row">
-				<div class="col-md-3 col-sm-6 col-xs-6 even">
 
-							<ui:include src="/ClaimPages/EstimationTable.xhtml" />
+	<ui:define name="pageContent">
+	<h:form>
+		<div class="section section-content section-pad bdr-top">
+			<div class="container">
+				<div class="col-md-12">
+					<h2>ESTIMATION</h2>
+					<div class="col-md-4">
+						<div class="wgs-box boxed bg-primary light">
+							<div class="wgs-content">
+								<h3>Claim Estimation </h3>
+								<h:form>
+									<div class="form-results"></div>
+									<div class="form-group row">
+										<div class="form-field col-md-12 form-m-bttm">
+											<h:outputText value="Auto estimited value before accident: #{claimBean.claim.estimation.valueBefore}" />
+											
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="form-field col-md-12 form-m-bttm">
+
+											<h:outputText value="Auto estimited value after accident :#{claimBean.claim.estimation.valueAfter}" />
+											
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="form-field col-md-12 form-m-bttm">
+											<h:outputText value="domage estimated value: #{claimBean.claim.estimation.valueClam}DT" />
+										
+										</div>
+									</div>
+
+							
+
+
+									
+								</h:form>
+
+							</div>
+
+
 						</div>
-						<div class="col-md-8">
-							<ui:include src="/ClaimPages/EstimationTable2.xhtml" />
-             
-             </div>
-             </div>
-             </ui:define>
-           
-  		
+					</div>
+					<div class="col-md-8">
+						<div class="wgs-box boxed bg-primary light">
+							<div class="wgs-content">
+								<h3>WORKFORCE</h3>
+								<h:form >
+									<div class="form-results"></div>
+									<div class="form-group row">
+										<div class="form-field col-md-6 form-m-bttm">
+											<h:outputText value="sheet metal workshop: #{claimBean.claim.estimation.sheetMetalWorkshop}" />
+											
+										</div>
+										<div class="form-field col-md-6">
+											<h:outputText value="Mechanical: #{claimBean.claim.estimation.mechanical} " />
+											
+										
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="form-field col-md-6 form-m-bttm">
+											<h:outputText value="electricity : #{claimBean.claim.estimation.electricity}"  />
+											
+										</div>
+										<div class="form-field col-md-6">
+											<h:outputText value="Tapestry  : #{claimBean.claim.estimation.tapestry}" />
+											
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="form-field col-md-6 form-m-bttm">
+											<h:outputText value="Woodwork: #{claimBean.claim.estimation.woodwork} " />
+										
+										</div>
+										<div class="form-field col-md-6">
+											<h:outputText value="Painting : #{claimBean.claim.estimation.painting}" />
+											
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="form-field col-md-12 form-m-bttm">
+											<h:outputText value="Total #{claimBean.claim.estimation.priceWorkForce} " />
+										
+										</div>
+									</div>
+									
+							
+
+</h:form>
+
+
+<h:form>
+					<h:selectOneMenu rendered="#{claimBean.formDisplayedes5}" value="#{claimBean.claim.estimation.result}">
+						<f:selectItem itemValue="bye new car" itemLabel="bye new car" />
+						<f:selectItem itemValue="repaire the  car" itemLabel="repaire the  car" />
+					</h:selectOneMenu>
+					<h:commandButton rendered="#{claimBean.formDisplayedes5}" value="OK"
+StyleClass="btn solid-btn sb-h" action="#{claimBean.doSavees()}" styleClass="btn btn-default btn-sm mt-10" />
+
+					</h:form>
+
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+				
+			
+		
+		</div>
+	</div>							
+</h:form>
+
+							
+	</ui:define>
+
+
 </ui:composition>

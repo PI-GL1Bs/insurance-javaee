@@ -8,6 +8,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import domain.Insured;
 import domain.Survey;
 import domain.SurveyVote;
 
@@ -65,5 +66,16 @@ public class SurveyVoteService implements SurveyVoteServiceRemote, SurveyVoteSer
 		return list.size() ;
 		
 		
+	}
+
+	
+	@Override
+	public int SurveyVoteVerif(int insured, int survey) {
+		
+		List<SurveyVote> list = new ArrayList<>();
+		list = em.createQuery("SELECT s FROM SurveyVote s where survey_idSurvey=:survey and insured_id=:insured", SurveyVote.class).
+				setParameter("insured", insured).setParameter("survey", survey).getResultList();
+		
+		return list.size() ;
 	}
 }

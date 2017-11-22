@@ -18,9 +18,11 @@ public class ClaimMangment implements ClaimMangmentLocal{
 	@PersistenceContext
 	private EntityManager em ;
 	@Override
-	public void addClaim(Claim i) {
-		em.merge(i);
-		
+	public boolean  addClaim(Claim i) {
+	if (em.merge(i)!=null)
+		return true;
+	else 
+		return false;
 	}
 
 	public ClaimMangment() {
@@ -29,9 +31,11 @@ public class ClaimMangment implements ClaimMangmentLocal{
 	}
 
 	@Override
-	public void updateClaim(Claim i) {
-		em.merge(i);
-		
+	public boolean updateClaim(Claim i) {
+		if (em.merge(i)!=null)
+			return true;
+		else 
+			return false;
 	}
 
 	@Override
@@ -41,10 +45,9 @@ public class ClaimMangment implements ClaimMangmentLocal{
 	}
 
 	@Override
-	public void deleteClaim(Claim i) {
+	public boolean deleteClaim(Claim i) {
 		// TODO Auto-generated method stub
-		em.remove(em.merge(i));
-		
+		return false;
 	}
 	@Override
 		public List<Claim> findAllClaims() {

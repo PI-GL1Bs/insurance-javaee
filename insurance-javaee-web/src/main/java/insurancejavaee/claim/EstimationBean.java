@@ -21,11 +21,11 @@ public class EstimationBean {
 	
 	//ClaimBean CB =new ClaimBean();
  private Estimation estimation = new Estimation();
-	private boolean formDisplayed=false;
-	private boolean formDisplayed2=false;
-	private boolean formDisplayed3=true;
-	private boolean formDisplayed4;
-	private boolean formDisplayed5=true;
+	private boolean formDisplayedes=false;
+	private boolean formDisplayedes2=false;
+	private boolean formDisplayedes3=true;
+	private boolean formDisplayedes4;
+	private boolean formDisplayedes5=true;
 	ClaimBean cb=new ClaimBean();
 	@PostConstruct
 	public void init() {
@@ -33,11 +33,11 @@ public class EstimationBean {
 	}
 
 	public void doSCalculeWorkForce(){
-		formDisplayed=true;
+		formDisplayedes=true;
 		estimation.setPriceWorkForce(estimation.getElectricity()+estimation.getMechanical()+estimation.getPainting()+estimation.getWoodwork()+estimation.getSheetMetalWorkshop()+estimation.getTapestry());
 	}
 	public void doCalculClaimValue(){
-		formDisplayed2=true;
+		formDisplayedes2=true;
 		estimation.setValueClam(estimation.getValueBefore()-estimation.getValueAfter());
 		
 	}
@@ -49,7 +49,7 @@ public class EstimationBean {
 			estimation.setResult("repaire this Auto");	
 }
 		else estimation.setResult("you can buy a new car or repaire the old one an Email has been sent to the client to decide");
-		formDisplayed4=true;
+		formDisplayedes4=true;
 	
 		
 	}
@@ -57,12 +57,14 @@ public class EstimationBean {
 		
 		return "/ClaimAdminPages/ClaimsListAdmin?faces-redirect=true";
 	}
-	public String doSave(){
-	estimation.setClaim(cb.getClaim());
+	public String doSavees(){
+	
 		
 		estimationServiceLocal.saveEstimation(estimation);
-		cb.setClaim(new Claim());
-		formDisplayed4=true;
+		
+		cb.getClaim().setEstimation(estimation);
+		cb.saveClaim();
+		formDisplayedes4=true;
 		this.estimation=new Estimation();
 		return "/ClaimAdminPages/ClaimsListAdmin?faces-redirect=true";
 	}
@@ -81,35 +83,35 @@ public class EstimationBean {
 	public void setEstimation(Estimation estimation) {
 		this.estimation = estimation;
 	}
-	public boolean isFormDisplayed() {
-		return formDisplayed;
+	public boolean isformDisplayedes() {
+		return formDisplayedes;
 	}
-	public void setFormDisplayed(boolean formDisplayed) {
-		this.formDisplayed = formDisplayed;
+	public void setformDisplayedes(boolean formDisplayedes) {
+		this.formDisplayedes = formDisplayedes;
 	}
-	public boolean isFormDisplayed2() {
-		return formDisplayed2;
+	public boolean isformDisplayedes2() {
+		return formDisplayedes2;
 	}
-	public void setFormDisplayed2(boolean formDisplayed2) {
-		this.formDisplayed2 = formDisplayed2;
+	public void setformDisplayedes2(boolean formDisplayedes2) {
+		this.formDisplayedes2 = formDisplayedes2;
 	}
-	public boolean isFormDisplayed3() {
-		return formDisplayed3;
+	public boolean isformDisplayedes3() {
+		return formDisplayedes3;
 	}
-	public void setFormDisplayed3(boolean formDisplayed3) {
-		this.formDisplayed3 = formDisplayed3;
+	public void setformDisplayedes3(boolean formDisplayedes3) {
+		this.formDisplayedes3 = formDisplayedes3;
 	}
-	public boolean isFormDisplayed4() {
-		return formDisplayed4;
+	public boolean isformDisplayedes4() {
+		return formDisplayedes4;
 	}
-	public void setFormDisplayed4(boolean formDisplayed4) {
-		this.formDisplayed4 = formDisplayed4;
+	public void setformDisplayedes4(boolean formDisplayedes4) {
+		this.formDisplayedes4 = formDisplayedes4;
 	}
-	public boolean isFormDisplayed5() {
-		return formDisplayed5;
+	public boolean isformDisplayedes5() {
+		return formDisplayedes5;
 	}
-	public void setFormDisplayed5(boolean formDisplayed5) {
-		this.formDisplayed5 = formDisplayed5;
+	public void setformDisplayedes5(boolean formDisplayedes5) {
+		this.formDisplayedes5 = formDisplayedes5;
 	}
 	
 	

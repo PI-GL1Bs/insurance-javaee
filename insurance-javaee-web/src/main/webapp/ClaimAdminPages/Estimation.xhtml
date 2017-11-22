@@ -20,7 +20,7 @@
 									<div class="form-group row">
 										<div class="form-field col-md-12 form-m-bttm">
 											<h:outputText value="valeur avant sinistr" />
-											<h:inputText value="#{estimationBean.estimation.valueBefore}" styleClass="form-control">
+											<h:inputText value="#{claimBean.estimation.valueBefore}" styleClass="form-control">
 												<f:convertNumber></f:convertNumber>
 											</h:inputText>
 										</div>
@@ -29,7 +29,7 @@
 										<div class="form-field col-md-12 form-m-bttm">
 
 											<h:outputText value="valeur venale" />
-											<h:inputText value="#{estimationBean.estimation.valueAfter}" styleClass="form-control">
+											<h:inputText value="#{claimBean.estimation.valueAfter}" styleClass="form-control">
 												<f:convertNumber></f:convertNumber>
 											</h:inputText>
 										</div>
@@ -37,12 +37,12 @@
 									<div class="form-group row">
 										<div class="form-field col-md-12 form-m-bttm">
 											<h:outputText value="valeur resudielle" />
-											<h:outputText rendered="#{estimationBean.formDisplayed2}"
-										value="valeur resudielle= #{estimationBean.estimation.valueClam}DT" />
+											<h:outputText rendered="#{claimBean.formDisplayed2}"
+										value="valeur resudielle= #{claimBean.estimation.valueClam}DT" />
 										</div>
 									</div>
 <h:commandButton
-										action="#{estimationBean.doCalculClaimValue()}" value="ClaimValue"
+										action="#{claimBean.doCalculClaimValue()}" value="ClaimValue"
 										styleClass="btn solid-btn sb-h">  <f:ajax execute="@form" render="@form" /></h:commandButton>
 								
 								
@@ -67,14 +67,14 @@
 									<div class="form-group row">
 										<div class="form-field col-md-6 form-m-bttm">
 											<h:outputText value="sheet metal workshop" />
-											<h:inputText value="#{estimationBean.estimation.sheetMetalWorkshop}"
+											<h:inputText value="#{claimBean.estimation.sheetMetalWorkshop}"
 												styleClass="form-control">
 												<f:convertNumber></f:convertNumber>
 											</h:inputText>
 										</div>
 										<div class="form-field col-md-6">
 											<h:outputText value="Mechanical " />
-											<h:inputText value="#{estimationBean.estimation.mechanical}"
+											<h:inputText value="#{claimBean.estimation.mechanical}"
 												styleClass="form-control">
 												<f:convertNumber></f:convertNumber>
 											</h:inputText>
@@ -84,14 +84,14 @@
 										<div class="form-field col-md-6 form-m-bttm">
 											<h:outputText value="electricity " />
 											<h:inputText
-												value="#{estimationBean.estimation.electricity}"
+												value="#{claimBean.estimation.electricity}"
 												styleClass="form-control">
 												<f:convertNumber></f:convertNumber>
 											</h:inputText>
 										</div>
 										<div class="form-field col-md-6">
 											<h:outputText value="Tapestry " />
-											<h:inputText value="#{estimationBean.estimation.tapestry}"
+											<h:inputText value="#{claimBean.estimation.tapestry}"
 												styleClass="form-control">
 												<f:convertNumber></f:convertNumber>
 											</h:inputText>
@@ -100,26 +100,26 @@
 									<div class="form-group row">
 										<div class="form-field col-md-6 form-m-bttm">
 											<h:outputText value="Woodwork " />
-											<h:inputText value="#{estimationBean.estimation.woodwork}"
+											<h:inputText value="#{claimBean.estimation.woodwork}"
 												styleClass="form-control">
 												<f:convertNumber></f:convertNumber>
 											</h:inputText>
 										</div>
 										<div class="form-field col-md-6">
 											<h:outputText value="Painting " />
-											<h:inputText value="#{estimationBean.estimation.painting}"
+											<h:inputText value="#{claimBean.estimation.painting}"
 												styleClass="form-control">
 												<f:convertNumber></f:convertNumber>
 											</h:inputText>
 										</div>
 									</div>
 									<h:commandButton
-										action="#{estimationBean.doSCalculeWorkForce()}" value="Total"
+										action="#{claimBean.doSCalculeWorkForce()}" value="Total"
 										styleClass="btn solid-btn sb-h"> <f:ajax execute="@form" render="@form" /></h:commandButton>
 								
 								
-									<h:outputText rendered="#{estimationBean.formDisplayed}"
-										value="Total= #{estimationBean.estimation.priceWorkForce}DT" />
+									<h:outputText 
+										value="#{claimBean.estimation.priceWorkForce}" />
 							
 
 </h:form>
@@ -134,15 +134,15 @@
 				</div>
 				
 			</div><h:commandButton 
-										action="#{estimationBean.doResultEstimation()}" value="Show Result"
+										action="#{claimBean.doResultEstimation()}" value="Show Result"
 										styleClass="btn solid-btn sb-h"><f:ajax execute="@form" render="@form" /></h:commandButton>
 								
 								
-									<h:outputText rendered="#{estimationBean.formDisplayed4}"
-										value="Total= #{estimationBean.estimation.result}DT" />
+									<h:outputText 
+										value="Total= #{claimBean.estimation.result}DT" />
 		
 		<h:commandButton
-										action="#{estimationBean.doSave()}" value="Save and leave"
+										action="#{claimBean.doSavees()}" value="Save and leave"
 										styleClass="btn solid-btn sb-h"></h:commandButton>
 										</div>
 								

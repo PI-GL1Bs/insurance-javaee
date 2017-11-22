@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.persistence.criteria.Join;
 
 /**
  * Entity implementation class for Entity: Claim
@@ -85,7 +86,7 @@ public class Claim implements Serializable {
 	private List<ClaimPicture>listPicture ;
 	@ManyToOne
 	private Contract contract ;
-	@OneToOne(mappedBy="claim",cascade = CascadeType.ALL)
+	@ManyToOne
 	private Estimation estimation ;
 	public Claim() {
 		super();

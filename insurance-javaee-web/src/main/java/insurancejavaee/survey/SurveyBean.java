@@ -18,6 +18,13 @@ public class SurveyBean {
 	private SurveyServiceLocal surveyServiceLocal;
 	@EJB
 	private SurveyVoteServiceLocal surveyVoteServiceLocal;
+
+//	@ManagedProperty(value="#{AuthBean.user}")
+//	private User user;
+
+    Insured insured = new Insured() ;
+    
+	
 	public int oui;
 	public int non;
 	public int tot;
@@ -35,15 +42,13 @@ public class SurveyBean {
 
 	private boolean formDisplayed;
 
-	private Insured insured ; 
-	
 	@PostConstruct
 	public void init() {
 
 		listSurvey = surveyServiceLocal.findAllSurvey();
-		
+
 		listSurveyFront = surveyServiceLocal.findAllSurveyByDate();
-		
+
 		listSurveyVote = surveyVoteServiceLocal.findAllSurveyVote();
 	}
 
@@ -61,13 +66,19 @@ public class SurveyBean {
 			sv.setVote("non");
 		}
 
+		insured.setId(123456);
 	
 		sv.setInsured(insured);
 		sv.setSurvey(survey);
 
+		int a=surveyVoteServiceLocal.SurveyVoteVerif(insured.getId(), survey.getIdSurvey()) ;
+		if (a!=0)
+		{
+			return "/surveyFront/voted?faces-redirect=true";
+		}
 		surveyVoteServiceLocal.addSurveyVote(sv);
-
-		return "/surveyFront/listsurvey?faces-redirect=true";
+        return "/surveyFront/listsurvey?faces-redirect=true";
+		
 
 	}
 
@@ -97,10 +108,21 @@ public class SurveyBean {
 	}
 
 	public String navDetailsSurvaysFront() {
-		
+
 		return "/surveyFront/detailsSurvey?faces-redirect=true";
 	}
 
+	public String navSurveysFront() {
+
+		return "/surveyFront/listsurvey?faces-redirect=true";
+	}
+	
+	public String navSurveysList() {
+
+		return "/survey/listsurvey?faces-redirect=true";
+	}
+	
+	
 	public String navToSurvey() {
 
 		oui = surveyVoteServiceLocal.SurveyVoteCount("oui", survey.getIdSurvey());
@@ -225,8 +247,13 @@ public class SurveyBean {
 	public void setListSurveyFront(List<Survey> listSurveyFront) {
 		this.listSurveyFront = listSurveyFront;
 	}
-	
-	
-	
+
+//	public User getUser() {
+//		return user;
+//	}
+//
+//	public void setUser(User user) {
+//		this.user = user;
+//	}
 
 }

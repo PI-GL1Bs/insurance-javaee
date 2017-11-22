@@ -13,6 +13,7 @@ public class Estimation implements Serializable {
 
 	   
 	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private int id;
 	private float electricity;
 	private float mechanical;
@@ -25,8 +26,7 @@ public class Estimation implements Serializable {
 	private float valueClam,priceWorkForce;
 	private String result;
 	private static final long serialVersionUID = 1L;
-	@OneToOne
-private Claim claim=new Claim();
+
 	public Estimation() {
 		super();
 	}   
@@ -39,13 +39,7 @@ private Claim claim=new Claim();
 		this.priceWorkForce = priceWorkForce;
 	}
 
-	public Claim getClaim() {
-		return claim;
-	}
 
-	public void setClaim(Claim claim) {
-		this.claim = claim;
-	}
 
 	public int getId() {
 		return this.id;

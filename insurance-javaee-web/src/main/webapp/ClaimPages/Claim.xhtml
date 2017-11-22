@@ -50,7 +50,8 @@
 
 					<div class="row row-vm reverses">
 						<div class="col-md-6 col-sm-6 res-m-bttm pad-r-md">
-							<a href="#"><img src="image/photo-md-a.jpg" alt=""></img></a>
+							<a href="#"><img src="image/photo-md-a.jpg" alt=""></img></a><img id="image" src="../resources/image/myimagechev.jpg"
+									usemap="#Map"></img>
 						</div>
 						<div class="col-md-6 col-sm-6 pad-l-md">
 							<h2>#{claimBean.claim.title}</h2>
@@ -62,8 +63,7 @@
 							<h:outputText value="#{claimBean.claim.description} "
 								styleClass="lead" />
 							<p class="lead">#{claimBean.claim.description}</p>
-							<p class="lead">#{claimBean.claim.description}</p>
-
+							<p><strong>number of  vehicles damaged: </strong> #{claimBean.claim.nbCar}</p>
 						</div>
 
 					</div>

@@ -23,16 +23,18 @@
 									<span class="sr-only"> 35% Complete (success)</span>
 								</div>
 
-								<div class="progress-bar progress-bar-danger" style="width:  #{surveyBean.PNon}%">
+								<div class="progress-bar progress-bar-danger"
+									style="width:  #{surveyBean.PNon}%">
 									<span class="sr-only"> 50% Complete (danger)</span>
 								</div>
 							</div>
 							<br /> <br />
-							
-							<p style="border-bottom-style:solid; "> total vote : #{surveyBean.tot}  </p>
-							<p style="color: green;"> oui : #{surveyBean.oui}  </p>
-							<p style="color: red; "> non  : #{surveyBean.non}  </p>
-							
+
+							<p style="border-bottom-style: solid;">total vote :
+								#{surveyBean.tot}</p>
+							<p style="color: green;">oui : #{surveyBean.oui}</p>
+							<p style="color: red;">non : #{surveyBean.non}</p>
+
 						</div>
 						<div class="col-md-6 col-sm-6 pad-l-md">
 
@@ -44,8 +46,8 @@
 
 										<div class="col-md-12">
 											<article>
-												<span><i class="fa fa-calendar"></i>
-													end in #{surveyBean.survey.endDate}</span>
+												<span><i class="fa fa-calendar"></i> end in
+													#{surveyBean.survey.endDate}</span>
 											</article>
 										</div>
 
@@ -65,7 +67,9 @@
 						<h:commandButton action="#{surveyBean.navUpdate()}" value="update"
 							styleClass="btn solid-btn sb-h">
 						</h:commandButton>
-
+						<h:commandButton action="#{surveyBean.navSurveysList()}"
+							value="back " styleClass="btn solid-btn sb-h">
+						</h:commandButton>
 
 					</h:form>
 

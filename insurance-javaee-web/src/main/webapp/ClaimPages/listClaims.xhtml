@@ -6,12 +6,20 @@
 
 	<ui:define name="claim">claimDetails</ui:define>
 	<ui:define name="pageContent">
-		<h:form>
-			<h:commandButton action="#{claimBean.navCreate()}" value="Add Claim"
+	<div class="section section-services section-pad">
+	    <div class="container">
+	        <div class="content row center">
+				
+        		<div class="wide-sm">
+        			<h2>Report an Claim</h2>
+        			<p class="lead">A team of insurance professionals who are there when you need them, 24 hours a day, seven days a week. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudan.</p>
+        				
+				<h:form>
+		<h:commandButton action="#{claimBean.navCreate()}" value="Add Claim"
 				styleClass="btn solid-btn sb-h"/>
-		</h:form>
-		<div class="section section-content section-pad bdr-top">
-			<div class="container">
+		</h:form></div>	
+        		</div>
+				
 				<ui:repeat value="#{claimBean.listClaims}" var="c">
 <h:form>
 					<div class="gaps size-sep"></div>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Local;
 
+import domain.Insured;
 import domain.Survey;
 import domain.SurveyVote;
 
@@ -16,5 +17,7 @@ public interface SurveyVoteServiceLocal {
 	public List<SurveyVote> findAllSurveyVote();
 
 	public int SurveyVoteCount (String ch , int a) ; 
+	
+	public int SurveyVoteVerif (int insured , int survey) ; 
 	
 }
