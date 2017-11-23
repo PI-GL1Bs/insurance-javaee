@@ -30,8 +30,6 @@ public class Contract implements Serializable {
 	private Car car;
 	@ManyToOne
 	private Log log;
-//	@OneToOne
-//	private Police police;
 	private int police;
 	
 	@Temporal(TemporalType.TIMESTAMP)

@@ -27,8 +27,6 @@ public class Reunion implements Serializable {
 	private String description ;
 	private Date date;
 	@Transient
-	private Calendar calendar ;
-	@Transient
 	private String mailTo;
 	@ManyToMany
 	private List<Employee> listInvitedEmployees ;
@@ -87,12 +85,6 @@ public class Reunion implements Serializable {
 	public String toString() {
 		return "Reunion [idReunion=" + idReunion + ", name=" + name + ", description=" + description + ", date=" + date
 				+ "]";
-	}
-	public Calendar getCalendar() {
-		return calendar;
-	}
-	public void setCalendar(Calendar calendar) {
-		this.calendar = calendar;
 	}
    
 }

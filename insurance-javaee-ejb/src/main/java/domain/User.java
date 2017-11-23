@@ -17,8 +17,6 @@ public class User implements Serializable {
 
 	   
 	@Id
-	@GeneratedValue
-
 	private int id;
 	private String role ;
 	private String lastName ;
@@ -30,18 +28,11 @@ public class User implements Serializable {
 	private String password ;
 	private String confrimPassword;
 	private String sex ;
-	private int Tel ;
-	private Date birthDate;
+	private String phoneNumber;
+	private int nbConnect;
 	
-	
-	public Date getBirthDate() {
-		return birthDate;
-	}
-	public void setBirthDate(Date birthDate) {
-		this.birthDate = birthDate;
-	}
 	public User(int id, String role, String lastName, String firstName, String photo, String mail, String adresse,
-			String login, String password, String confrimPassword, String sex, int tel) {
+			String login, String password, String confrimPassword, String sex, String phoneNumber, Date birthDate) {
 		super();
 		this.id = id;
 		this.role = role;
@@ -54,8 +45,28 @@ public class User implements Serializable {
 		this.password = password;
 		this.confrimPassword = confrimPassword;
 		this.sex = sex;
-		Tel = tel;
+		this.phoneNumber = phoneNumber;
+		this.birthDate = birthDate;
 	}
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+
+
+	private Date birthDate;
+	
+	
+	public Date getBirthDate() {
+		return birthDate;
+	}
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
+	}
+	
 	public String getRole() {
 		return role;
 	}
@@ -123,18 +134,19 @@ public class User implements Serializable {
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
-	public int getTel() {
-		return Tel;
-	}
-	public void setTel(int tel) {
-		Tel = tel;
-	}
+	
 	
 
 	private static final long serialVersionUID = 1L;
 
 	public User() {
 		super();
+	}
+	public int getNbConnect() {
+		return nbConnect;
+	}
+	public void setNbConnect(int nbConnect) {
+		this.nbConnect = nbConnect;
 	}   
 	
    

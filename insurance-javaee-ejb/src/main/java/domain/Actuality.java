@@ -17,7 +17,7 @@ public class Actuality implements Serializable {
 	@Id
 	private int idActuality;
 	private static final long serialVersionUID = 1L;
-	@OneToMany(mappedBy="actuality")
+	@OneToMany(mappedBy="actuality",fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<ActualityComment> listActualityComments ;
 	
 	public Actuality() {

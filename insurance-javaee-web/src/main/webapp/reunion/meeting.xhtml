@@ -29,17 +29,18 @@
 										</time>
 									</div>
 									<div class="team-info col-md-8 col-sm-7 col-xs-12">
-										<h:form>												<h:outputText value="#{reunionBean.reunion.name}"
-													styleClass="name" />
-												<br />
-												<br />
-												<h:outputText value="" styleClass="sub-title" />
-												<h:outputText value="#{reunionBean.reunion.description}" />
+										<h:form>
+											<h:outputText value="#{reunionBean.reunion.name}"
+												styleClass="name" />
+											<br />
+											<br />
+											<h:outputText value="" styleClass="sub-title" />
+											<h:outputText value="#{reunionBean.reunion.description}" />
 											<br />
 											<h:commandButton action="#{reunionBean.goToUpdate()}"
-													value="Update" styleClass="btn solid-btn sb-h" />
-												<h:commandButton action="#{reunionBean.deleteMeeting()}"
-													value="Delete" styleClass="btn solid-btn sb-h" />
+												value="Update" styleClass="btn solid-btn sb-h" />
+											<h:commandButton action="#{reunionBean.deleteMeeting()}"
+												value="Delete" styleClass="btn solid-btn sb-h" />
 
 										</h:form>
 									</div>

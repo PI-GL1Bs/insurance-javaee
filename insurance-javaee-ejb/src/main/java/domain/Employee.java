@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import domain.User;
 
@@ -13,15 +15,15 @@ import domain.User;
  *
  */
 @Entity
-@DiscriminatorValue("employee")
+@XmlRootElement
 public class Employee extends User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	@OneToMany(mappedBy="employee")
+	@OneToMany(mappedBy="employee",fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<Claim> listClaims;
-	@ManyToMany(mappedBy="listInvitedEmployees", fetch=FetchType.EAGER)
+	@ManyToMany(mappedBy="listInvitedEmployees",fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<Reunion> listReunions ;
-	@OneToMany(mappedBy="employee")
+	@OneToMany(mappedBy="employee",fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<Appointment> listAppointments ;
 public Date getDateOfHire() {
 		return dateOfHire;
@@ -38,7 +40,7 @@ public Date getDateOfHire() {
 	public List<Appointment> getListAppointments() {
 		return listAppointments;
 	}
-
+	@XmlAttribute
 	public void setListAppointments(List<Appointment> listAppointments) {
 		this.listAppointments = listAppointments;
 	}
@@ -50,7 +52,7 @@ public Date getDateOfHire() {
 	public List<Claim> getListClaims() {
 		return listClaims;
 	}
-
+	@XmlAttribute
 	public void setListClaims(List<Claim> listClaims) {
 		this.listClaims = listClaims;
 	}
@@ -58,7 +60,7 @@ public Date getDateOfHire() {
 	public List<Reunion> getListReunions() {
 		return listReunions;
 	}
-
+	@XmlAttribute
 	public void setListReunions(List<Reunion> listReunions) {
 		this.listReunions = listReunions;
 	}

@@ -17,7 +17,7 @@ public class Log implements Serializable {
 	@Id
 	private int idLog;
 	private static final long serialVersionUID = 1L;
-	@OneToMany(mappedBy="log")
+	@OneToMany(mappedBy="log",fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<Contract> listContracts ;
 	
 	public Log() {

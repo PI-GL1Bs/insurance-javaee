@@ -24,6 +24,15 @@ public class AuthentificationBean implements Serializable{
 	// model
 	private User user;
 	private boolean loggedIn;
+	private boolean DoLogOut;
+	public boolean isDoLogOut() {
+		return DoLogOut;
+	}
+
+	public void setDoLogOut(boolean doLogOut) {
+		DoLogOut = doLogOut;
+	}
+
 	public AuthentificationBean() {
 		
 	}
@@ -32,6 +41,7 @@ public class AuthentificationBean implements Serializable{
 	public void initModel() {
 		user = new User();
 		loggedIn = false;
+		DoLogOut=true;
 	}
 
 	public String doLogin() {
@@ -42,11 +52,13 @@ public class AuthentificationBean implements Serializable{
 		if (found != null) {
 			user = found;
 			loggedIn = true;
+			DoLogOut=false;
 			if (user instanceof Admin) {
-				navigateTo = "/ClaimAdminPages/ClaimAdmin?faces-redirect=true";
+				navigateTo = "/User/back?faces-redirect=true";
 			}
 			if (user instanceof Insured) {
-				navigateTo = "/pages/customer/home?faces-redirect=true";
+				authenticationServiceLocal.updateInc(user.getLogin(), user.getPassword());
+				navigateTo = "/contract/addcontract?faces-redirect=true";
 			}
 
 		} else {
@@ -60,7 +72,7 @@ public class AuthentificationBean implements Serializable{
 	public String doLogout() {
 		String navigateTo = null;
 		initModel();
-		navigateTo = "/welcome?faces-redirect=true";
+		navigateTo = "/template/template?faces-redirect=true";
 		return navigateTo;
 	}
 
@@ -69,7 +81,7 @@ public class AuthentificationBean implements Serializable{
 		if (role.equals("Admin")) {
 			authorized = (user instanceof Admin);
 		}
-		if (role.equals("Customer")) {
+		if (role.equals("Insured")) {
 			authorized = (user instanceof Insured);
 		}
 

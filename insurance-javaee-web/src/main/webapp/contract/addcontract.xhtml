@@ -29,6 +29,13 @@
 				</div>
 			</div>
 
+			<div class="form-group row">
+				<div class="form-field col-md-6 form-m-bttm">
+					<h:outputText value="CIN" />
+					<h:inputText maxlength="8"  value="#{contractBean.insured.CIN}"
+						styleClass="form-control required" />
+				</div>
+			</div>
 
 			<div class="form-group row">
 				<div class="form-field col-md-6 form-m-bttm">
@@ -51,7 +58,7 @@
 				<div class="form-field col-md-6 form-m-bttm">
 					<h:outputText value="matricule car" />
 					<h:inputText value="#{contractBean.car.matricule}"
-						styleClass="form-control required" />
+						styleClass="form-control required" validator="matval"/>
 				</div>
 			</div>
 

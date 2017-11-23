@@ -42,7 +42,7 @@ public class ReclamationBean {
 
 		if (reclamation.getInsured() == null) {
 			Insured i = new Insured();
-			catalogInsured.create(i);
+			catalogInsured.saveOrUpdate(i);
 			reclamation.setInsured(i);
 		}
 

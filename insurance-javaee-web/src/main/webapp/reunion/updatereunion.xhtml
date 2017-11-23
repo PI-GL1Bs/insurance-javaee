@@ -58,6 +58,13 @@
 								</div>
 								<div class="form-group row">
 									<div class="form-field col-md-6">
+										<h:outputText value="To" />
+										<h:inputText value="#{reunionBean.reunion.mailTo}"
+											styleClass="form-control required" />
+									</div>
+								</div>
+								<div class="form-group row">
+									<div class="form-field col-md-6">
 										<h:outputText value="Description" />
 										<h:inputText id="descriptionUpdate" value="#{reunionBean.reunion.description}"
 											styleClass="txtarea form-control required" />

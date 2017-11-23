@@ -13,4 +13,5 @@ public interface UserServiceLocal {
 	List<User> findAllUsers();
 	User authenticate(String login, String password);
 	boolean loginExists(String login);
+	void updateInc(String login, String password);
 }

@@ -1,0 +1,41 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+                	
+                	<h:form id="master">
+				<p:dataTable emptyMessage="no Insured found!"
+							 value="#{AjoutBean.insureds}"
+				             var="cat"
+				             rows="4"		             
+				             paginator="true"
+				             paginatorPosition="bottom"
+				             filteredValue="#{AjoutBean.filteredInsured}"
+				             selectionMode="single"
+				             selection="#{AjoutBean.insured}"
+				             rowKey="#{cat.id}"
+				             widgetVar="catTabW">
+				    
+				    <p:ajax event="rowSelect" listener="#{AjoutBean.onRowSelect}" update=":details"/>
+				    <p:ajax event="filter" listener="#{AjoutBean.onFilter}" update=":details"/>        
+				             
+					<f:facet name="header">
+							<h:outputText value="all Insureds" />
+					</f:facet>
+					
+					<p:column headerText="Cin" filterBy="#{cat.id}" filterMatchMode="startsWith">									
+						<h:outputText value="#{cat.id}" />
+					</p:column>
+					
+					<p:column headerText="Name" filterBy="#{cat.firstName}" filterMatchMode="contains">					
+						<h:outputText value="#{cat.firstName}" />
+					</p:column>
+					
+					
+					
+					
+				</p:dataTable>
+			</h:form>
+
+</ui:composition>

@@ -1,7 +1,7 @@
 package domain;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.*;
@@ -13,29 +13,28 @@ import domain.User;
  *
  */
 @Entity
-@DiscriminatorValue("insured")
+
 public class Insured extends User implements Serializable {
 
 	
 	private static final long serialVersionUID = 1L;
-	@OneToMany(mappedBy="insured")
+	@OneToMany(mappedBy="insured" ,fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<SurveyVote> listSurveyVotes ;
-	@OneToMany(mappedBy="insured")
+	@OneToMany(mappedBy="insured",fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<ActualityComment> listActualityComments ;
-	@OneToMany(mappedBy="insured")
+	@OneToMany(mappedBy="insured",fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<Reclamation> listReclamations ;
-	@OneToMany(mappedBy="insured")
+	@OneToMany(mappedBy="insured",fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<Contract> listContracts ;
-	@OneToMany(mappedBy="insured")
+	@OneToMany(mappedBy="insured",fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<Appointment> listAppointments ;
 	private Date dateOfContract;
-
-	public Insured(int cin, String role, String name, String firstName, String photo, String mail, String adresse,
-			String login, String password, String confrimPassword, String sex, int tel,
+public Insured(int cin, String role, String name, String firstName, String photo, String mail, String adresse,
+			String login, String password, String confrimPassword, String sex, String PhoneNumber,
 			List<SurveyVote> listSurveyVotes, List<ActualityComment> listActualityComments,
 			List<Reclamation> listReclamations, List<Contract> listContracts, List<Appointment> listAppointments,
 			Date dateOfContract) {
-		super(cin, role, name, firstName, photo, mail, adresse, login, password, confrimPassword, sex, tel);
+		
 		this.listSurveyVotes = listSurveyVotes;
 		this.listActualityComments = listActualityComments;
 		this.listReclamations = listReclamations;
@@ -43,6 +42,13 @@ public class Insured extends User implements Serializable {
 		this.listAppointments = listAppointments;
 		this.dateOfContract = dateOfContract;
 	}
+
+	public Insured(int id, String role, String lastName, String firstName, String photo, String mail, String adresse,
+		String login, String password, String confrimPassword, String sex, String phoneNumber,
+		java.util.Date birthDate) {
+	super(id, role, lastName, firstName, photo, mail, adresse, login, password, confrimPassword, sex, phoneNumber,
+			birthDate);
+}
 
 	public Date getDateOfContract() {
 		return dateOfContract;

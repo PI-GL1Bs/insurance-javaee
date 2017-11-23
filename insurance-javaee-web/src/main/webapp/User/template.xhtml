@@ -1,0 +1,381 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html">
+	<h:head>
+	   <meta charset="utf-8"/>
+	
+
+<title>Admin Interface</title>
+<!-- Page Meta --><!-- The page meta is used by search engines to provide useful information about the site -->
+<meta name="description" content="Volta is a futuristic Web Application and Admin Dashboard built with Bootstrap, Stylus and CoffeeScript. From a developer trusted by thousands of users."/>
+<meta name="keywords" content="volta, admin, volta admin, dashboard, web, application, template, theme, admin dashboard, admin template, admin theme, web application template, dashboard template, pixevil, pixevil themes, grozav"/>
+<meta name="author" content="Alex Grozav (Pixevil)"/>
+<!-- Viewport -->
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1"/>
+<!-- Icons -->
+<link rel="apple-touch-icon" sizes="180x180" href="../icon/apple-touch-icon.png"/>
+<link rel="icon" type="image/png" href="../icon/favicon-32x32.png" sizes="32x32"/>
+<link rel="icon" type="image/png" href="../icon/favicon-16x16.png" sizes="16x16"/>
+<link rel="manifest" href="../icon/manifest.json"/>
+<link rel="mask-icon" href="../icon/safari-pinned-tab.svg" />
+<link rel="shortcut icon" href="../icon/favicon.ico"/>
+<meta name="msapplication-config" content="../icon/browserconfig.xml"/>
+<meta name="theme-color" content="#ff1643"/>
+
+
+
+
+<link href="../resources/assets/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="../resources/assets/css/application/application.min.css" rel="stylesheet" type="text/css"/>
+<link href="../resources/assets/css/animate/animate.min.css" rel="stylesheet" type="text/css"/>
+<link href="../resources/assets/css/nanoscroller/nanoscroller.min.css" rel="stylesheet" type="text/css"/>
+<link href="../resources/assets/css/metis-menu/metis-menu.min.css" rel="stylesheet" type="text/css"/>
+<link href="../resources/assets/css/perfect-scrollbar/perfect-scrollbar.min.css" rel="stylesheet" type="text/css"/>
+<link href="../resources/assets/css/icons/pixeden-stroke-icons.min.css" rel="stylesheet" type="text/css"/>
+<link href="../resources/assets/css/icons/font-awesome-icons.min.css" rel="stylesheet" type="text/css"/>
+
+<link href="../resources/assets/css/application/application.min.css" rel="stylesheet" type="text/css"/>
+
+<style>
+
+
+
+.form.-dark .form-check label::before, .form.-dark .form-control, form.-dark .form-check label::before, form.-dark .form-control {
+    color: #fff;
+    border-color: rgba(0,0,0,.125);
+    background-color: rgba(0,0,0,0);
+    background-image: -webkit-linear-gradient(top left,rgba(0,0,0,.25),rgba(0,0,0,.125));
+    background-image: linear-gradient(to bottom right,rgba(0,0,0,.25),rgba(0,0,0,.125));
+}
+
+</style>
+	
+		
+    </h:head>
+	<h:body>
+		
+<div id="header">
+				<div class="navbar -dark -fixed-top -has-5-items">
+				<div class="navbar-wrapper"><a class="navbar-brand" href="../index.html">
+				<span class="hidden-sm-up">Administration</span><span class="hidden-xs-down">Artistic Showroom</span></a>
+				<ul class="navbar-nav -right"><li><a class="has-morph-dropdown" href="#notifications-dropdown">
+				 <i class="pe pe-bell"></i> <span class="navbar-item-count">2</span></a></li><li>
+				 <a class="has-morph-dropdown" href="#applications-dropdown"> <i class="pe pe-keypad">
+				 </i> </a></li>
+				 <li class="navbar-profile">
+				 <a class="has-morph-dropdown" href="#profile-dropdown">
+				  <i class="pe pe-user"></i> </a></li><li id="right-sidebar-toggle"><a href="javascript:void(0);">
+				   <i class="pe pe-edit -rotate-90"></i> </a></li></ul>
+				   <div class="morph-dropdown-wrapper -dark -right"><div class="morph-dropdown-list -links"><div class="morph-dropdown" id="notifications-dropdown">
+				   <div class="morph-content"><h3>Notifications</h3>
+				   <p class="_text-muted">Here&#39;s what happened while you were away.</p><ul class="morph-links -small">
+				   <li><a href="#">
+<!-- Image -->
+<img src="../resources/assets/img/users/male3.jpg"/>
+ <strong>John Doe</strong> 
+  has accepted your team invitation.<small>Just Now</small>
+  </a></li>
+  <li>
+  <a href="#">
+<!-- Image -->
+<img src="../resouces/assets/img/users/female1.jpg"/> <strong>Gabriella Cruz</strong>  has invited you to her event.<small>12 Hours Ago</small></a></li><li><a href="#">
+<!-- Image -->
+<img src="../resouces/assets/img/users/female2.jpg"/> 
+<strong>Sofia Owens</strong>  has started following you.<small>1 Day Ago</small>
+</a></li></ul>
+<div class="_margin-top-1x"><a class="btn -primary -block">View All Notifications</a></div>
+</div>
+</div>
+<div class="morph-dropdown" id="applications-dropdown">
+<div class="morph-content -gallery">
+<h3>Applications</h3>
+<p class="_text-muted">Open one of your connected social applications.</p>
+<ul class="morph-gallery"><li><a href="https://facebook.com/pixevil" target="_blank"> 
+<i class="fa fa-facebook-square">
+</i> Facebook</a>
+</li>
+<li>
+<a href="https://twitter.com/pixevil" target="_blank"> 
+<i class="fa fa-twitter"></i> Twitter</a></li><li>
+<a href="https://plus.google.com/+pixevil" target="_blank"> 
+<i class="fa fa-google-plus"></i> Google Plus</a></li><li>
+<a href="https://linkedin.com/company/pixevil" target="_blank">
+ <i class="fa fa-linkedin"></i> LinkedIn</a></li><li>
+ <a href="https://github.com/pixevil" target="_blank"> <i class="fa fa-github"></i> GitHub</a></li><li>
+ <a href="https://bitbucket.org/" target="_blank" rel="nofollow">
+  <i class="fa fa-bitbucket"></i> BitBucket</a></li><li>
+  <a href="https://slack.com/" target="_blank" rel="nofollow">
+   <i class="fa fa-slack"></i> Slack</a></li><li>
+   <a href="https://dropbox.com/" target="_blank" rel="nofollow"> 
+   <i class="fa fa-dropbox"></i> DropBox</a></li></ul>
+   <div class="_margin-top-1x"><a class="btn -primary -block">View All Applications</a>
+   </div></div></div>
+   <div class="morph-dropdown" id="profile-dropdown">
+   <div class="morph-content "><div class="morph-profile">
+<!-- Image -->
+<p:graphicImage value="/resources/images/img.png" cache="false" styleClass="chat-list-avatar" ></p:graphicImage>
+<p:graphicImage value="#{artistBean.img}" cache="false" styleClass="chat-list-avatar" ></p:graphicImage>
+<h4><h:outputText value="#{authBean.user.login}" /></h4></div>
+<ul class="morph-links">
+
+<li><a href="dashboard.jsf">My Profile</a></li>
+
+ <li>
+  <h:commandButton styleClass="btn -primary -block" action="#{authBean.logout()}" value="Sign Out"/></li> </ul>
+ 
+ 
+ </div></div></div></div></div></div>
+				
+				</div>
+    
+   
+   
+
+    
+
+<div class="sidebar -dark -left -collapsible" id="sidebar">
+<div class="nano">
+<div class="nano-content">
+<div class="sidebar-wrapper">
+<ul class="sidebar-menu metismenu">
+<li class="sidebar-heading">Application</li>
+<li class="">
+<a href="../index.html">
+ <i class="pe pe-home">
+ </i>
+  <span>Dashboard</span>
+  </a>
+  </li>
+  
+    <li class="">
+    <a href="#"> 
+    <i class="pe pe-mail">
+    </i> 
+    <span>Message</span>
+    <span class="fa arrow">
+    </span>
+    </a>
+    <ul>
+    <li class="">
+    <a href="../email/compose.html">Compose</a>
+    </li>
+    <li class="">
+    <a href="../email/inbox.html">Inbox</a>
+    </li><li class="">
+    <a href="../email/detail.html">Preview</a>
+    </li>
+    </ul>
+    </li>
+    <li class="sidebar-heading">Components</li>
+    <li class="">
+    <a href="#">
+     <i class="pe pe-box2">
+     </i> 
+     <span>UI Kit</span>
+     <span class="fa arrow">
+     </span>
+     </a>
+     <ul>
+     <li class="">
+     <a href="../ui/buttons.html">Buttons</a>
+     </li>
+     <li class="">
+     <a href="../ui/general.html">General</a>
+     </li>
+     <li class="">
+     <a href="../ui/grid.html">Grid</a>
+     </li>
+     <li class="">
+     <a href="../ui/icons.html">Icons</a>
+     </li>
+     <li class="">
+     <a href="../ui/modals.html">Modals</a>
+     </li>
+     <li class="">
+     <a href="../ui/notifications.html">Notifications</a>
+     </li>
+     <li class="">
+     <a href="../ui/panels.html">Panels</a>
+     </li>
+     <li class="">
+     <a href="../ui/tabs.html">Tabs &amp; Accordions</a>
+     </li>
+     <li class="">
+     <a href="../ui/typography.html">Typography</a>
+     </li>
+     </ul>
+     </li>
+     <li class="">
+     <a href="#"> 
+     <i class="pe pe-browser"></i> 
+     <span>Tables</span>
+     <span class="fa arrow">
+     </span>
+     </a>
+     <ul>
+     <li class="">
+     <a href="../tables/general.html">General</a>
+     </li>
+     <li class="">
+     <a href="../tables/data-tables.html">Data Tables</a>
+     </li>
+     </ul>
+     </li>
+     <li class="-active">
+     <a href="#">
+      <i class="pe pe-note">
+      </i>
+       <span>Forms</span>
+       <span class="fa arrow">
+       </span>
+       </a>
+       <ul>
+       <li class="">
+       <a href="elements.html">General</a>
+       </li>
+       <li class="">
+       <a href="input-masks.html">Input Masks</a>
+       </li>
+       <li class="">
+       <a href="validation.html">Validation</a>
+       </li>
+       <li class="-active">
+       <a href="wizard.html">Wizard</a>
+       </li>
+       <li class="">
+       <a href="wysiwyg.html">WYSIWYG Editor</a>
+       </li>
+       <li class="">
+       <a href="multi-upload.html">Multi Upload</a>
+       </li>
+       </ul>
+       </li>
+       <li class="">
+       <a href="#"> 
+       <i class="pe pe-graph2">
+       </i>
+        <span>Charts</span>
+        <span class="fa arrow">
+        </span>
+        </a>
+        <ul>
+        <li class="">
+        <a href="../ServiceExposure/Bar.xhtml">Available Spaces</a>
+        </li>
+        <li class="">
+        <a href="../ServiceExposure/Pie.xhtml">Rental Price Spaces</a>
+        </li>
+        <li class="">
+        <a href="../ServiceExposure/SurveyStat.xhtml">Survey Statistical</a>
+        </li>
+        </ul>
+        </li>
+        <li class="">
+        <a href="#">
+         <i class="pe pe-map-marker">
+         </i>
+          <span>Maps</span>
+          <span class="fa arrow">
+          </span>
+          </a>
+          <ul>
+          <li class="">
+          <a href="../maps/google.html">Google Maps</a>
+          </li>
+          <li class="">
+          <a href="../maps/vector.html">Vector Maps</a>
+          </li>
+          </ul>
+          </li>
+          <li>
+          <a class="" href="#"> 
+          <i class="pe pe-copy-file">
+          </i>
+           <span>Pages</span>
+           <span class="fa arrow">
+           </span>
+           </a>
+           <ul>
+           <li class="">
+           <a href="../pages/blank.html">Blank Page</a>
+           </li>
+           <li class="">
+           <a href="../signin.html">Sign In</a>
+           </li>
+           <li class="">
+           <a href="../signup.html">Sign Up</a>
+           </li>
+           <li class="">
+           <a href="../forgot-password.html">Forgot Password</a>
+           </li>
+           <li class="">
+           <a href="../404.html">404 Page</a>
+           </li>
+           <li class="">
+           <a href="../500.html">500 Page</a>
+           </li>
+           </ul>
+           </li>
+           <li class="">
+           <a href="#"> 
+           <i class="pe pe-albums">
+           </i>
+            <span>Layouts</span>
+            <span class="fa arrow">
+            </span>
+            </a>
+            <ul>
+            <li class="">
+            <a href="../layouts/left-sidebar.html">Left Sidebar</a>
+            </li>
+            <li class="">
+            <a href="../layouts/right-sidebar.html">Right Sidebar</a>
+            </li>
+            <li class="">
+            <a href="../layouts/without-sidebar.html">Without Sidebar</a>
+            </li>
+            <li class="">
+            <a href="../layouts/left-aside-left-sidebar.html">Left Aside Left Sidebar</a>
+            </li>
+            <li class="">
+            <a href="../layouts/right-aside-left-sidebar.html">Right Aside Left Sidebar</a>
+            </li>
+            <li class="">
+            <a href="../layouts/left-aside-right-sidebar.html">Left Aside Right Sidebar</a>
+            </li>
+            <li class="">
+            <a href="../layouts/right-aside-right-sidebar.html">Right Aside Right Sidebar</a>
+            </li>
+            </ul>
+            </li>
+            </ul>
+            </div>
+            </div>
+            </div>
+            </div>
+            <!-- /Left Sidebar -->
+
+
+<div class="content -dark -with-left-sidebar -collapsible">
+<div class="container-fluid">
+<div class="row">
+<div class="col -lg-12">
+
+<ui:insert name="content"></ui:insert>
+ </div> </div></div></div>     
+<script src="../resources/assets/js/themes/base.min.js" type="text/javascript"></script><script src="../resources/assets/js/themes/volta.min.js" type="text/javascript"></script>
+<!-- Document --><script src="../resources/assets/js/jquery/jquery.min.js" type="text/javascript"></script><script src="../resources/assets/js/tether/tether.min.js" type="text/javascript"></script><script src="../resources/assets/js/moment/moment.min.js" type="text/javascript"></script><script src="../resources/assets/js/bootstrap/bootstrap.min.js" type="text/javascript"></script><script src="../resources/assets/js/validator/validator.min.js" type="text/javascript"></script><script src="../resources/assets/js/perfect-scrollbar/perfect-scrollbar.min.js" type="text/javascript"></script><script src="../resources/assets/js/datepicker/datepicker.min.js" type="text/javascript"></script><script src="../resources/assets/js/cookie/cookie.min.js" type="text/javascript"></script>
+<!-- Animations --><script src="../resources/assets/js/gsap/tweenlite.min.js" type="text/javascript"></script><script src="../resources/assets/js/gsap/plugins/css.min.js" type="text/javascript"></script><script src="../resources/assets/js/gsap/easing/easepack.min.js" type="text/javascript"></script><script src="../resources/assets/js/animus/animus.min.js" type="text/javascript"></script>
+<!-- Notifications --><script src="../resources/assets/js/gritter/gritter.min.js" type="text/javascript"></script>
+<!-- Analytics --><script src="../resources/assets/js/googleanalytics/googleanalytics.min.js" type="text/javascript"></script><script src="../resources/assets/js/hotjar/hotjar.min.js" type="text/javascript"></script>
+<!-- Sidebar --><script src="../resources/assets/js/metis-menu/metis-menu.min.js" type="text/javascript"></script>
+<!-- Application Components --><script src="../resources/assets/js/application/components/morph-dropdown.min.js" type="text/javascript"></script><script src="../resources/assets/js/application/components/navbar.min.js" type="text/javascript"></script><script src="../resources/assets/js/application/components/panel.min.js" type="text/javascript"></script>
+<!-- Allow Theme Cookies --><script src="../resources/assets/js/themes/themeable.min.js" type="text/javascript"></script>
+<!-- Application --><script src="../resources/assets/js/application/application.min.js" type="text/javascript"></script>
+<!-- Page Specific Scripts --><script src="../resources/assets/js/datatables/datatables.min.js" type="text/javascript"></script><script src="../resources/assets/js/application/views/tables/datatables.min.js" type="text/javascript"></script>
+	</h:body>
+</html>

@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import domain.Employee;
 import domain.Reunion;
 
 /**
@@ -38,8 +39,16 @@ public class ReunionService implements ReunionServiceRemote, ReunionServiceLocal
 	}
 	@Override
 	public List<Reunion> findAllReunions() {
-		return em.createQuery("select r from Reunion r", Reunion.class)
+		String mail ="" ;
+		List<Reunion> reunions = em.createQuery("select r from Reunion r", Reunion.class)
 				.getResultList();
+		for (Reunion reunion : reunions) {
+			for (Employee employee : reunion.getListEmployees()) {
+				mail = mail + employee.getMail() + " ";
+			}
+			reunion.setMailTo(mail);
+		}
+		return reunions;
 	}
 
 	@Override

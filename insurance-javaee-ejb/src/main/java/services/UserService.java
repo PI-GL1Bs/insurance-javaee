@@ -27,7 +27,7 @@ public class UserService implements UserServiceRemote, UserServiceLocal {
 	}
 
 	public void createUser(User user) {
-		em.persist(user);
+		em.persist(em.merge(user));
 	}
 
 	public User authenticate(String login, String password) {
@@ -66,5 +66,12 @@ public class UserService implements UserServiceRemote, UserServiceLocal {
 		return exists;
 	}
 
+	public void updateInc(String login, String password){
+    	em.createQuery("Update User set nbConnect = nbConnect+1 where login=:login and password=:password")
+    	.setParameter("login", login)
+    	.setParameter("password", password)
+    	.executeUpdate();	
+
+    }
 
 }

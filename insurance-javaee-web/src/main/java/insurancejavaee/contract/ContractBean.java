@@ -12,7 +12,6 @@ import javax.faces.bean.ManagedBean;
 import domain.Car;
 import domain.Contract;
 import domain.Insured;
-import domain.Police;
 import services.CarServiceLocal;
 import services.ContractServiceLocal;
 import services.InsuredServiceLocal;
@@ -45,8 +44,8 @@ public class ContractBean {
 	public void init() {
 		car = new Car();
 		insured = new Insured();
-		insured.setTel(555);
-		insured.setDateOfContract(new Date());
+//		insured.setTel(555);
+//		insured.setDateOfContract(new Date());
 
 		contract = new Contract();
 		listContract = cm.findAllContracts();
@@ -59,7 +58,7 @@ public class ContractBean {
 	public String doSave() {
 		contract.setCreationdate(new Date());
 		carser.update(car);
-		insurser.update(insured);
+		insurser.saveOrUpdate(insured);
 		cm.save(contract);
 		listContract = cm.findAllContracts();
 		return "listcontracts?faces-redirect=true";
@@ -84,7 +83,7 @@ public class ContractBean {
 	public String addContract() {
 		String navTo = "addcontract?faces-redirect=true";
 
-		if (insurser.create(insured) != null ){
+		insurser.saveOrUpdate(insured);
 		if (carser.addCar(car) != null) {
 
 			Contract c = new Contract();
@@ -98,7 +97,7 @@ public class ContractBean {
 				navTo = "listcontracts?faces-redirect=true";
 
 			}
-		}}
+		}
 		;
 
 		return navTo;
