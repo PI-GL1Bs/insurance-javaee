@@ -5,18 +5,20 @@
 
 	<header class="site-header header-s1 is-sticky">
 		<!-- Topbar -->
-		 
-    
-			
-		<div class="topbar">
-			<div class="container" >
+         <div class="topbar">
+			<div class="container">
 				<div class="row">
+				 <h:form rendered="#{AuthBean.loggedIn}"> 
+               		<h:panelGrid columns="2">
+		                <h:outputText value="Logged in as #{AuthBean.user.login}" />
+		                   <hr></hr>
+      
+		                <h:commandLink action="#{AuthBean.doLogout}" value="logout" class="couleur"/>
+	                </h:panelGrid>
+                </h:form>	
 					<div class="top-aside top-left clearfix hidden-xs">
-						<p>
-							<strong>We are licensed in NY, NJ, PA, MA, FL, CT.</strong>
-						</p>
+						
 					</div>
-					
 					<div class="top-aside top-right clearfix">
 						<ul class="social clearfix hidden-xs">
 							<li><a href="#" class="fa fa-facebook"></a></li>
@@ -26,10 +28,9 @@
 						</ul>
 						<ul class="top-contact clearfix">
 							<li class="t-phone t-phone1"><em class="fa fa-phone"
-								aria-hidden="true"></em> <span><a href="tel:8001235689">(800)
-										123-5689</a></span></li>
-							<li class="quote-btn"><a href="get-a-quote.html" class="btn">Get
-									A Quote</a></li>
+								aria-hidden="true"></em> <span><a href="tel:8001235689"></a></span></li>
+		<li class="quote-btn"><a href="get-a-quote.html" class="btn">
+</a></li>
 						</ul>
 
 					</div>
@@ -39,13 +40,12 @@
 		<!-- #end Topbar -->
 		<!-- Navbar -->
 		<div class="navbar navbar-primary">
-			<div class="container" >
+			<div class="container">
 				<!-- Logo -->
 				<a class="navbar-brand" href="index.html"> <img
 					class="logo logo-dark" alt="" src="image/logo.png"
-					srcset="image/logo2x.png 2x" /><img class="logo logo-light"
-					alt="" src="image/logo_white.png"
-					srcset="image/logo_white2x.png 2x" /></a>
+					srcset="image/logo2x.png 2x" /><img class="logo logo-light" alt=""
+					src="image/logo_white.png" srcset="image/logo_white2x.png 2x" /></a>
 				<!-- #end Logo -->
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed"
@@ -118,102 +118,77 @@
 					</ul>
 				</nav>
 				<div id="wrap">
-			<div id="regbar">
-				<div id="navthing">
-				  <h2><a href="#" id="loginform">Login</a> | <a href="#" id="registerform" >Register</a></h2>
-			<h:form>
-			
-					<div class="login" >
-					  <div class="arrow-up"></div>
-					  <div class="formholder">
-						<div class="randompad">
-						   <fieldset>
-							 <label name="email">Email</label>
-							 <h:inputText value="#{AuthBean.user.login}" type="email" placeholder="example@example.com"/>
-							 
-							 <label name="password">Password</label>
-							 <h:inputText value="#{AuthBean.user.password}" type="password" placeholder="password" />
-							 <table>
-							 <tr>
-	<td> <h:commandButton action="#{AuthBean.doLogin()}" type="submit" value="Login" /></td>
-							<td> <input type="submit" value="forget password ?" /></td>
-							 </tr>
-							 </table>
-				 
-						   </fieldset>
-						</div>
-					  </div>
-					</div>
-			
-			
-			</h:form>
-				 <div class="register" >
+					<div id="regbar">
+						<div id="navthing">
+							<h2>
+								<a href="#" id="loginform">Login</a> | <a href="#"
+									id="registerform">Register</a>
+							</h2>
+							
 
-					  <div class="arrow-up1"></div>
-					  <div class="formholder">
-						<div class="randompad">
-						 
-						   <fieldset>
-							<table>
-							<tr> 
-							<td><label name="FN">First Name</label></td>
-							 <td><input type="email" placeholder="first name" /></td>
-							 </tr>
-							
-							 <tr> 
-							 
-							<td><label name="Ls">Last Name</label></td>
-							 <td><input type="email" placeholder="last name" /></td>
-							 </tr>
-							<!-- <tr>
-						 
-							<td><label name="email">sex</label></td>
-							<td>
-							<select>
-							<option value="homme">Homme</option>
-							<option value="femme">Femme</option>
-							</select>
-							</td>
-							 </tr>!-->
-							 <tr> 
-							<td><label name="date">Date birth</label></td>
-							 <td><input type="date"  /></td>
-							 </tr>
-							 <tr> 
-							<td><label name="FN">Phone number</label></td>
-							 <td><input type="email" placeholder="phone number" /></td>
-							 </tr>
-							 <tr> 
-							<td><label name="FN">Login</label></td>
-							 <td><input type="email" placeholder="login" /></td>
-							 </tr>
-							 <tr> 
-							<td><label name="FN">Password</label></td>
-							 <td><input type="email" placeholder="password" /></td>
-							 </tr>
-							 <tr> 
-							<td><label name="FN">Confirm password</label></td>
-							 <td><input type="email" placeholder="Confirm password" /></td>
-							 </tr>
-							 <tr> 
-							<td><label name="FN">Mail</label></td>
-							 <td><input type="email" placeholder="mail" /></td>
-							 </tr>
-							
-							
-				  </table>
-				  <input type="submit" value="register" />
-						   </fieldset>
-						  
-						</div>
-					  </div>
-					</div>
+								<div class="login">
+									<div class="arrow-up"></div>
+									<div class="formholder">
+										<div class="randompad">
+										
+											
+											<h:form>
+									        <h:panelGrid columns="2">
+											<h:outputLabel value="Login"/>
+					                        <h:inputText value="#{AuthBean.user.login}" class="form-control"/>   
+					                        <h:outputLabel value="Password" />
+					                        <h:inputSecret value="#{AuthBean.user.password}" class="form-control"/>
+					                       
+										     <h:commandButton action="#{AuthBean.doLogin}" value="Login"/>
 
+											<h:commandButton value="forget password ?" />
+
+                                           </h:panelGrid>
+                                           	</h:form>
+										
+										</div>
+									</div>
+								</div>
+
+							<div class="register">
+						    <div class="arrow-up1"></div>
+						     <div class="formholder">
+						     <div class="randompad">	
+										<h:form>
+											<h:panelGrid columns="2">
+											        <h:outputLabel value="cin" />
+													<h:inputText value="#{AjoutBean.insured.id}" class="form-control"/>
+													<h:outputLabel value="First Name" />
+													<h:inputText value="#{AjoutBean.insured.firstName}" class="form-control"/>
+													<h:outputLabel value="Last Name" />
+													<h:inputText value="#{AjoutBean.insured.lastName}" class="form-control"/>
+													<h:outputLabel value="Date Of Birth" />
+												    <h:inputText value="#{AjoutBean.insured.birthDate}" class="form-control" converterMessage="Example: 17/12/2010"> 
+										            <f:convertDateTime pattern="dd/MM/yyyy" />
+												    </h:inputText>	
+											        <h:outputLabel value="Phone Number"/>
+													<h:inputText value="#{AjoutBean.insured.phoneNumber}" class="form-control"/>
+													<h:outputLabel value="Login" />
+													<h:inputText value="#{AjoutBean.insured.login}" class="form-control"/>
+													<h:outputLabel value="Password" />
+													<h:inputSecret value="#{AjoutBean.insured.password}" class="form-control"/>	
+										            <h:outputLabel value="Confirm Password" />
+												    <h:inputSecret  value="#{AjoutBean.insured.confrimPassword}" class="form-control"/>
+													<h:outputLabel value="Mail" />
+												    <h:inputText value="#{AjoutBean.insured.mail}" class="form-control"/>
+											        <h:commandButton action="#{AjoutBean.doSignUp}" value="add" />
+											</h:panelGrid>
+											</h:form>                     
+									</div>
+								</div>
+							</div>
+
+						</div>
 					</div>
-				  </div>
-			</div>
-			<h:outputScript library="js" name="index.js" />
-					<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+				</div>
+				<h:outputScript library="js" name="index.js" />
+				<script
+					src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 				<!-- #end MainNav -->
 			</div>
 		</div>
