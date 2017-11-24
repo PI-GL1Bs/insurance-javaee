@@ -28,5 +28,8 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Hamza Torjmen/Desktop/4eme annee/JAVA EE/Jackson 2.0.1/jackson-annotations-2.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Hamza Torjmen/Desktop/4eme annee/JAVA EE/Jackson 2.0.1/jackson-core-2.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Hamza Torjmen/Desktop/4eme annee/JAVA EE/Jackson 2.0.1/jackson-databind-2.0.1.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
