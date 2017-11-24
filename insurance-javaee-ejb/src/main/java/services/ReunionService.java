@@ -43,6 +43,7 @@ public class ReunionService implements ReunionServiceRemote, ReunionServiceLocal
 		List<Reunion> reunions = em.createQuery("select r from Reunion r", Reunion.class)
 				.getResultList();
 		for (Reunion reunion : reunions) {
+			mail="";
 			for (Employee employee : reunion.getListEmployees()) {
 				mail = mail + employee.getMail() + " ";
 			}

@@ -2,14 +2,18 @@ package domain;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Calendar;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  * Entity implementation class for Entity: Reunion
@@ -28,7 +32,8 @@ public class Reunion implements Serializable {
 	private Date date;
 	@Transient
 	private String mailTo;
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JsonManagedReference
 	private List<Employee> listInvitedEmployees ;
 	private static final long serialVersionUID = 1L;
 	

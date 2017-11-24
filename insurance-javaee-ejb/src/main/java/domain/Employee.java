@@ -8,6 +8,9 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import domain.User;
 
 /**
@@ -22,6 +25,7 @@ public class Employee extends User implements Serializable {
 	@OneToMany(mappedBy="employee",fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<Claim> listClaims;
 	@ManyToMany(mappedBy="listInvitedEmployees",fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JsonBackReference
 	private List<Reunion> listReunions ;
 	@OneToMany(mappedBy="employee",fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<Appointment> listAppointments ;
