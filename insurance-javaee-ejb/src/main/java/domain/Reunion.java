@@ -4,23 +4,26 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Transient;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * Entity implementation class for Entity: Reunion
  *
  */
 @Entity
-
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class Reunion implements Serializable {
 
 	   
@@ -32,20 +35,10 @@ public class Reunion implements Serializable {
 	private Date date;
 	@Transient
 	private String mailTo;
-	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-	@JsonManagedReference
+	@ManyToMany(fetch=FetchType.EAGER)
 	private List<Employee> listInvitedEmployees ;
 	private static final long serialVersionUID = 1L;
 	
-//	@ManyToOne
-//	private Employee employee ;
-//	
-//	public Employee getEmployee() {
-//		return employee;
-//	}
-//	public void setEmployee(Employee employee) {
-//		this.employee = employee;
-//	}
 	public Reunion() {
 		super();
 	}   
@@ -86,10 +79,17 @@ public class Reunion implements Serializable {
 	public void setMailTo(String mailTo) {
 		this.mailTo = mailTo;
 	}
+	public List<Employee> getListInvitedEmployees() {
+		return listInvitedEmployees;
+	}
+	public void setListInvitedEmployees(List<Employee> listInvitedEmployees) {
+		this.listInvitedEmployees = listInvitedEmployees;
+	}
 	@Override
 	public String toString() {
 		return "Reunion [idReunion=" + idReunion + ", name=" + name + ", description=" + description + ", date=" + date
-				+ "]";
+				+ ", mailTo=" + mailTo + ", listInvitedEmployees=" + listInvitedEmployees + "]";
 	}
+	
    
 }
