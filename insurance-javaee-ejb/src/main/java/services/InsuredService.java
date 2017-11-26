@@ -11,6 +11,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import domain.Insured;
+import domain.User;
 
 /**
  * Session Bean implementation class InsuredService
@@ -60,6 +61,13 @@ public class InsuredService implements InsuredServiceLocal {
     	{
     		em.merge(insured);
     		
+    	}
+    	public boolean removeUser(Insured insured) {
+    		if (insured!= null) {
+    			em.remove(em.merge(insured));
+    			return true ;
+    		}
+    		return false;
     	}
 
 
