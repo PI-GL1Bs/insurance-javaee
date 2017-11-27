@@ -40,11 +40,11 @@ public class ReclamationBean {
 
 	public String doSave() {
 
-		if (reclamation.getInsured() == null) {
-			Insured i = new Insured();
-			catalogInsured.saveOrUpdate(i);
-			reclamation.setInsured(i);
-		}
+//		if (reclamation.getInsured() == null) {
+//			Insured i = new Insured();
+//			catalogInsured.saveOrUpdate(i);
+//			reclamation.setInsured(i);
+//		}
 
 		if (reclamation.getStatus() == null) {
 			reclamation.setStatus("pending");

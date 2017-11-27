@@ -4,13 +4,19 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * Entity implementation class for Entity: Reclamation
  *
  */
 @Entity
-
+@XmlRootElement
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class Reclamation implements Serializable {
 
 	@Id
@@ -30,6 +36,7 @@ public class Reclamation implements Serializable {
 	private Insured insured;
 	private String subject;
 	private String description;
+	private String category;
 	private String status;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateTime;
@@ -75,5 +82,13 @@ public class Reclamation implements Serializable {
 
 	public void setDateTime(Date dateTime) {
 		this.dateTime = dateTime;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 }
