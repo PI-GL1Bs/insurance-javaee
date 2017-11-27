@@ -26,19 +26,21 @@ public class SurveyService implements SurveyServiceRemote, SurveyServiceLocal {
 	}
 
 	@Override
-	public void addSurvey(Survey i) {
+	public Survey addSurvey(Survey i) {
 		em.merge(i);
+		return i ; 
 	}
 
 	@Override
 	public List<Survey> findAllSurvey() {
-		return em.createQuery("select s from Survey s", Survey.class).getResultList();
+		 List<Survey> surveys = em.createQuery("select s from Survey s", Survey.class).getResultList();
+		 return surveys ; 
 	}
 
 	@Override
-	public void updateSurvey(Survey i) {
+	public Survey updateSurvey(Survey i) {
 		em.merge(i);
-
+		return i  ;
 	}
 
 	@Override

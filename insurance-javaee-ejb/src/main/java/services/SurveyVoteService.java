@@ -57,25 +57,36 @@ public class SurveyVoteService implements SurveyVoteServiceRemote, SurveyVoteSer
 	}
 
 	@Override
-	public int SurveyVoteCount(String ch , int a) { 
-		 
-		List<SurveyVote> list = new ArrayList<>();
-		list = em.createQuery("SELECT s FROM SurveyVote s where vote=:ch and survey_idSurvey=:a", SurveyVote.class).
-				setParameter("ch", ch).setParameter("a", a).getResultList();
-		
-		return list.size() ;
-		
-		
-	}
+	public int SurveyVoteCount(String ch, int a) {
 
+		List<SurveyVote> list = new ArrayList<>();
+		list = em.createQuery("SELECT s FROM SurveyVote s where vote=:ch and survey_idSurvey=:a", SurveyVote.class)
+				.setParameter("ch", ch).setParameter("a", a).getResultList();
+
+		return list.size();
+	}
 	
 	@Override
-	public int SurveyVoteVerif(int insured, int survey) {
-		
+	public int SurveyVoteCountBySurvey(int a) {
+
 		List<SurveyVote> list = new ArrayList<>();
-		list = em.createQuery("SELECT s FROM SurveyVote s where survey_idSurvey=:survey and insured_id=:insured", SurveyVote.class).
-				setParameter("insured", insured).setParameter("survey", survey).getResultList();
-		
-		return list.size() ;
+		list = em.createQuery("SELECT s FROM SurveyVote s where survey_idSurvey=:a", SurveyVote.class).
+				setParameter("a", a).getResultList();
+
+		return list.size();
+	}
+	
+	
+
+	@Override
+	public int SurveyVoteVerif(int insured, int survey) {
+
+		List<SurveyVote> list = new ArrayList<>();
+		list = em
+				.createQuery("SELECT s FROM SurveyVote s where survey_idSurvey=:survey and insured_id=:insured",
+						SurveyVote.class)
+				.setParameter("insured", insured).setParameter("survey", survey).getResultList();
+
+		return list.size();
 	}
 }
