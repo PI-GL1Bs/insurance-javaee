@@ -13,6 +13,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
 import domain.Insured;
+import domain.User;
 import services.InsuredServiceLocal;
 import services.UserServiceLocal;
 @ManagedBean(name="AjoutBean")
@@ -25,6 +26,16 @@ public class AjoutInsuredBean {
 	private InsuredServiceLocal insuredService;
 	@ManagedProperty("#{authBean}")
 	private AuthentificationBean authBean ;
+	private List <User>listUsers;
+	private User user ;
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	private Insured insured;
 	private List<Insured> insureds;
 	private boolean formDisplayed;
@@ -75,11 +86,13 @@ public class AjoutInsuredBean {
 		return navigateTo;
 	}
 	
-	public String doDelete() {
-		insuredService.removeInsured(insured);
-		return "User/back.jsf?faces-redirect=true";
-		//insureds = insuredService.findAllInsured();
-		//formDisplayed = false;
+	public void doDelete() {
+		
+		insuredService.removeUser(insured);
+			
+		listUsers = userServiceLocal.findAllUsers();
+		formDisplayed=false;
+		
 	}
 
 	public void doCancel() {

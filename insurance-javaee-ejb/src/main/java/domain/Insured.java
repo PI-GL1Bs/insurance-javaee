@@ -7,6 +7,8 @@ import java.util.List;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import domain.User;
 
 /**
@@ -14,22 +16,30 @@ import domain.User;
  *
  */
 @Entity
-
 @XmlRootElement
 public class Insured extends User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	@JsonBackReference(value="name1")
 	@OneToMany(mappedBy = "insured", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	
 	private List<SurveyVote> listSurveyVotes;
+
+	@JsonBackReference(value="name2")
 	@OneToMany(mappedBy = "insured", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<ActualityComment> listActualityComments;
+
+	@JsonBackReference(value="name3")
 	@OneToMany(mappedBy = "insured", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Reclamation> listReclamations;
+
+	@JsonBackReference(value="name4")
 	@OneToMany(mappedBy = "insured", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Contract> listContracts;
+
+	@JsonBackReference(value="name5")
 	@OneToMany(mappedBy = "insured", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Appointment> listAppointments;
+
 	private Date dateOfContract;
 
 	public Insured(int cin, String role, String name, String firstName, String photo, String mail, String adresse,

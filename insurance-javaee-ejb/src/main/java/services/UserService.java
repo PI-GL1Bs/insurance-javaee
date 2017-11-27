@@ -11,6 +11,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+
 import domain.User;
 
 /**
@@ -46,6 +47,22 @@ public class UserService implements UserServiceRemote, UserServiceLocal {
 		}
 		return found;
 	}
+	public List<User> authentification(String login, String password) {
+		List<User> found = null;
+		String jpql = "select u from User u where u.login=:login and u.password=:password";
+		TypedQuery<User> query = em.createQuery(jpql, User.class);
+		query.setParameter("login", login);
+		query.setParameter("password", password);
+		try {
+			found = query.getResultList();
+		} catch (Exception ex) {
+			Logger.getLogger(UserService.class.getName()).log(
+					Level.WARNING,
+					"authentication attempt failure with login=" + login
+							+ " and password=" + password);
+		}
+		return found;
+	}
 
 	public List<User> findAllUsers() {
 		return em.createQuery("select u from User u", User.class)
@@ -73,5 +90,47 @@ public class UserService implements UserServiceRemote, UserServiceLocal {
     	.executeUpdate();	
 
     }
+	public User findUserById(int cin) {
+		User found = null;
+		String jpql = "select u from User u where u.id=:cin";
+		TypedQuery<User> query = em.createQuery(jpql, User.class);
+		query.setParameter("cin", cin);
+		try {
+			found = query.getSingleResult();
+		} catch (Exception ex) {
+			Logger.getLogger(UserService.class.getName()).log(Level.WARNING,
+					"no such cin=" + cin);
+		}
+		return found;
+	}
+	public void DeleteById(int cin) {
+		
+		String jpql = "delete u from User u where u.id=:cin";
+		TypedQuery<User> query = em.createQuery(jpql, User.class);
+		query.setParameter("cin", cin);
+		try {
+			
+		} catch (Exception ex) {
+			Logger.getLogger(UserService.class.getName()).log(Level.WARNING,
+					"no such cin=" + cin);
+		}
+		
+	}
+	
+	@Override
+	public void deleteUser(User u) {
+		em.remove(em.merge(u));
+			
+	}
+
+	@Override
+	public boolean updateUser(User u) {
+		em.merge(u);
+		System.out.println("modifié");
+		return true;
+	}
+	
 
 }
+
+
