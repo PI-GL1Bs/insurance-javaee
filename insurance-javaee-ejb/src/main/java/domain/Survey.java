@@ -1,16 +1,25 @@
 package domain;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  * Entity implementation class for Entity: Survey
  *
  */
 @Entity
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class Survey implements Serializable {
 
 	   
@@ -25,7 +34,7 @@ public class Survey implements Serializable {
 	
     private static final long serialVersionUID = 1L;
 	
-	@OneToMany(mappedBy="survey",cascade = CascadeType.ALL)
+	@OneToMany(fetch=FetchType.EAGER,mappedBy="survey")
 	private List<SurveyVote> listSurveyVotes ;
 
 	public Survey() {

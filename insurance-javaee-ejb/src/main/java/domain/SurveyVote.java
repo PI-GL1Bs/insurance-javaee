@@ -3,6 +3,8 @@ package domain;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 /**
  * Entity implementation class for Entity: SurveyVote
  *
@@ -19,8 +21,10 @@ public class SurveyVote implements Serializable {
     private String vote ; 
 	
 	@ManyToOne
+	@JsonBackReference(value="insured")
 	private Insured insured ;
 	@ManyToOne
+	@JsonBackReference(value="survey")
 	private Survey survey;
 	
 	public Insured getInsured() {

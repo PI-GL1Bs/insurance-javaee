@@ -17,4 +17,5 @@ public interface InsuredServiceLocal {
 	List<Insured> findAllInsured();
 	Insured findInsuredByName(String name);
     void modifyInsured(Insured insured);
+    boolean removeUser(Insured insured);
 }

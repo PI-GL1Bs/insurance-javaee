@@ -18,6 +18,7 @@ public interface SurveyVoteServiceLocal {
 
 	public int SurveyVoteCount (String ch , int a) ; 
 	
-	public int SurveyVoteVerif (int insured , int survey) ; 
+	public int SurveyVoteVerif (int insured , int survey) ;
+	public int SurveyVoteCountBySurvey(int a); 
 	
 }

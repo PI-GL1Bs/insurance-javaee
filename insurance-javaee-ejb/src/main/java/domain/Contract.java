@@ -5,13 +5,21 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * Entity implementation class for Entity: Contract
  *
  */
 @Entity
-
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Contract implements Serializable {
 
 	@Id
@@ -22,25 +30,31 @@ public class Contract implements Serializable {
 
 	@ManyToOne
 	private Insured insured;
+	
 	@OneToMany
+	@JsonBackReference
 	private List<Claim> listClaims;
+	
 	@OneToMany
+	@JsonBackReference
 	private List<Prepossessing> listPrepossessings;
+	
 	@OneToOne
 	private Car car;
+	
 	@ManyToOne
 	private Log log;
-	private int police;
 	
+	private int police;
+
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date creationdate;
 
-	
 	@PrePersist
-	public void meth(){
+	public void meth() {
 		creationdate = new Date();
 	}
-	
+
 	public Log getLog() {
 		return log;
 	}

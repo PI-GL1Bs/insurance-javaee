@@ -72,7 +72,7 @@ public class AuthentificationBean implements Serializable{
 	public String doLogout() {
 		String navigateTo = null;
 		initModel();
-		navigateTo = "/template/template?faces-redirect=true";
+		navigateTo = "/template/template.jsf?faces-redirect=true";
 		return navigateTo;
 	}
 

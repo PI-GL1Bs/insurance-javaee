@@ -17,18 +17,33 @@ public class ReclamationService implements ReclamationServiceLocal {
 	private EntityManager em;
 
 	@Override
-	public void create(Reclamation reclamation) {
-		em.persist(reclamation);
+	public boolean create(Reclamation reclamation) {
+		try {
+			em.persist(reclamation);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 	@Override
-	public void save(Reclamation reclamation) {
-		em.merge(reclamation);
+	public boolean save(Reclamation reclamation) {
+		try {
+			em.merge(reclamation);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 	@Override
-	public void delete(Reclamation reclamation) {
-		em.remove(em.merge(reclamation));
+	public boolean delete(Reclamation reclamation) {
+		try {
+			em.remove(em.merge(reclamation));
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 	@Override
@@ -44,5 +59,10 @@ public class ReclamationService implements ReclamationServiceLocal {
 		return null;
 	}
 
+	@Override
+	public Reclamation find(int id) {
+		
+		return em.find(Reclamation.class, id);
+	}
 
 }

@@ -5,6 +5,9 @@ import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import domain.User;
 
@@ -13,28 +16,38 @@ import domain.User;
  *
  */
 @Entity
-
+@XmlRootElement
 public class Insured extends User implements Serializable {
 
-	
 	private static final long serialVersionUID = 1L;
-	@OneToMany(mappedBy="insured" ,fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-	private List<SurveyVote> listSurveyVotes ;
-	@OneToMany(mappedBy="insured",fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-	private List<ActualityComment> listActualityComments ;
-	@OneToMany(mappedBy="insured",fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-	private List<Reclamation> listReclamations ;
-	@OneToMany(mappedBy="insured",fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-	private List<Contract> listContracts ;
-	@OneToMany(mappedBy="insured",fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-	private List<Appointment> listAppointments ;
+	@JsonBackReference(value="name1")
+	@OneToMany(mappedBy = "insured", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private List<SurveyVote> listSurveyVotes;
+
+	@JsonBackReference(value="name2")
+	@OneToMany(mappedBy = "insured", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private List<ActualityComment> listActualityComments;
+
+	@JsonBackReference(value="name3")
+	@OneToMany(mappedBy = "insured", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private List<Reclamation> listReclamations;
+
+	@JsonBackReference(value="name4")
+	@OneToMany(mappedBy = "insured", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private List<Contract> listContracts;
+
+	@JsonBackReference(value="name5")
+	@OneToMany(mappedBy = "insured", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private List<Appointment> listAppointments;
+
 	private Date dateOfContract;
-public Insured(int cin, String role, String name, String firstName, String photo, String mail, String adresse,
+
+	public Insured(int cin, String role, String name, String firstName, String photo, String mail, String adresse,
 			String login, String password, String confrimPassword, String sex, String PhoneNumber,
 			List<SurveyVote> listSurveyVotes, List<ActualityComment> listActualityComments,
 			List<Reclamation> listReclamations, List<Contract> listContracts, List<Appointment> listAppointments,
 			Date dateOfContract) {
-		
+
 		this.listSurveyVotes = listSurveyVotes;
 		this.listActualityComments = listActualityComments;
 		this.listReclamations = listReclamations;
@@ -44,11 +57,11 @@ public Insured(int cin, String role, String name, String firstName, String photo
 	}
 
 	public Insured(int id, String role, String lastName, String firstName, String photo, String mail, String adresse,
-		String login, String password, String confrimPassword, String sex, String phoneNumber,
-		java.util.Date birthDate) {
-	super(id, role, lastName, firstName, photo, mail, adresse, login, password, confrimPassword, sex, phoneNumber,
-			birthDate);
-}
+			String login, String password, String confrimPassword, String sex, String phoneNumber,
+			java.util.Date birthDate) {
+		super(id, role, lastName, firstName, photo, mail, adresse, login, password, confrimPassword, sex, phoneNumber,
+				birthDate);
+	}
 
 	public Date getDateOfContract() {
 		return dateOfContract;
@@ -101,5 +114,5 @@ public Insured(int cin, String role, String name, String firstName, String photo
 	public Insured() {
 		super();
 	}
-   
+
 }
